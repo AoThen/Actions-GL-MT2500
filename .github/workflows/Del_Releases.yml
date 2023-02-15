@@ -1,0 +1,28 @@
+name: Remove old Releases
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      keep_latest:
+        description: 'keep_latest'
+        required: true
+        default: 5
+      delete_tag_pattern:
+        description: 'delete_tag_pattern'
+        required: false
+        type: string
+        default: ""
+
+jobs:
+  del_Releases:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Remove old Releases
+      uses: dev-drprasad/delete-older-releases@v0.2.0
+      with:
+        repo: ${{ github.repository }}
+        keep_latest: ${{ github.event.inputs.keep_latest }}
+        delete_tag_pattern: ${{ github.event.inputs.delete_tag_pattern }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_FIRMWARE }}

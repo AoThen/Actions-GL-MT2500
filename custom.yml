@@ -1,0 +1,19 @@
+feeds:
+  # - name: custom
+  #   path: ../feeds_dir/custom
+  - name: helloworld
+    uri: https://github.com/fw876/helloworld.git
+    branch: master
+  - name: OpenClash
+    uri: https://github.com/vernesong/OpenClash.git
+    branch: master
+packages:
+  - luci-app-ssr-plus
+  - luci-app-openclash
+
+
+diffconfig: |
+  CONFIG_PACKAGE_dnsmasq=n
+  CONFIG_PACKAGE_dnsmasq-full=y
+  CONFIG_PACKAGE_luci-app-openclash=y
+  CONFIG_LUCI_LANG_zh_Hans=y
