@@ -45,6 +45,7 @@ jobs:
 
       - name: make
         run: |
+          chmod +x ./build.sh
           ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }}
 
       - name: Organize files
