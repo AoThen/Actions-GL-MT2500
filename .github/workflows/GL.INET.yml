@@ -29,6 +29,11 @@ on:
         required: false
         default: true
         type: boolean
+      release:
+        description: "上传到release"
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   build:
@@ -85,7 +90,7 @@ jobs:
 
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
-        if: steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        if: ${{ inputs.ui }} == true && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_FIRMWARE }}
         with:
