@@ -92,6 +92,9 @@ target_mt7981_gl-mt2500 | \
     target_mt7981_gl-mt3000)
     python3 setup.py -c configs/config-mt798x-7.6.6.1.yml
     ln -s $base/gl-infra-builder/mt7981 ~/openwrt && cd ~/openwrt
+    #luci-theme-argon
+    git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+
     if [[ $ui == true ]]; then
         ./scripts/gen_config.py $profile glinet_depends glinet_nas custom
         git clone https://github.com/gl-inet/glinet4.x.git ~/glinet
