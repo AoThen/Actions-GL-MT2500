@@ -7,7 +7,7 @@
 - luci-theme-argon
 - aliyundrive-webdav
 - luci-app-pushbot
-- luci-app-alist
+- ~~luci-app-alist~~
 - helloworld
 - passwall
 
