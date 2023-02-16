@@ -3,6 +3,9 @@ CRTDIR=$(pwd)
 base=$1
 profile=$2
 ui=$3
+glversion1=$4
+glversion2=$5
+
 echo $base
 if [ ! -e "$base" ]; then
     echo "Please enter base folder"
@@ -94,6 +97,9 @@ target_mt7981_gl-mt2500 | \
     ln -s $base/gl-infra-builder/mt7981 ~/openwrt && cd ~/openwrt
     #luci-theme-argon
     git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+    #版本信息
+    echo $glversion1 > ./files/etc/glversion
+    echo $glversion2 > ./files/etc/version.type
 
     if [[ $ui == true ]]; then
         ./scripts/gen_config.py $profile glinet_depends glinet_nas custom

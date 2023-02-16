@@ -20,9 +20,19 @@ on:
           - target_siflower_gl-sft1200
           - target_ramips_gl-mt1300
       record:
-        description: "输入版本描述"
+        description: "输入描述"
         required: false
         default: "openclash"
+        type: string
+      glversion1:
+        description: "版本"
+        required: false
+        default: "AoThen V1.0"
+        type: string
+      glversion2:
+        description: "固件类型"
+        required: false
+        default: "Alpha1"
         type: string
       ui:
         description: "是否包含官方UI (目前支持IPQ6018系列、mt7981系列和GL-A1300)"
@@ -51,7 +61,7 @@ jobs:
       - name: make
         run: |
           chmod +x ./build.sh
-          ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }}
+          ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }} ${{ inputs.glversion1 }} ${{ inputs.glversion2 }}
 
       - name: Organize files
         id: organize
