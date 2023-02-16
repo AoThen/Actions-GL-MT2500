@@ -27,6 +27,7 @@ packages:
   - luci-app-pushbot
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
+  - luci-app-alist
 
 
 
@@ -35,15 +36,22 @@ diffconfig: |
   CONFIG_PACKAGE_dnsmasq-full=y
   CONFIG_PACKAGE_luci-compat=y
   CONFIG_PACKAGE_luci-app-openclash=y
+  CONFIG_PACKAGE_aliyundrive-webdav=y
   CONFIG_PACKAGE_luci-app-aliyundrive-webdav=y
+  CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn=y
+  CONFIG_PACKAGE_alist=y
+  CONFIG_PACKAGE_luci-app-alist=y
+  CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
   CONFIG_PACKAGE_luci-app-passwall=y
   CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
+  CONFIG_PACKAGE_luci-app-ssr-plus=y
+  CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_IPT2Socks=y
+  CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
   CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=y
   CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
   CONFIG_PACKAGE_luci-theme-argon=y
-  CONFIG_PACKAGE_wpad-basic=n
-  CONFIG_PACKAGE_wpad=n
   CONFIG_LUCI_LANG_zh_Hans=y
+
   CONFIG_BUSYBOX_CUSTOM=y
   CONFIG_BUSYBOX_CONFIG_FEATURE_FLOAT_SLEEP=y
 
