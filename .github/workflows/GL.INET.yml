@@ -53,14 +53,19 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: update
+      - name: Initialization environment
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
-          sudo apt update
+          sudo apt update -y
           sudo apt upgrade -y
           sudo apt install python build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml subversion -y
+          sudo -E apt-get -qq autoremove --purge -y
+          sudo -E apt-get -qq clean -y
+          sudo timedatectl set-timezone "Asia/Shanghai"
           git config --global user.email "AoThen@Github.com"
           git config --global user.name "AoThen"
       - name: make
