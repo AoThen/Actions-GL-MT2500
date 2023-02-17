@@ -57,6 +57,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Initialization and update environment
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo apt -y autoremove --purge
