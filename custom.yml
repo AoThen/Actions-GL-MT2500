@@ -1,26 +1,28 @@
 feeds:
   - name: custom
     path: ../feeds_dir/custom
-  - name: pushbot
-    uri: https://github.com/zzsj0928/luci-app-pushbot.git
-    branch: master
   - name: aliyundrive
     uri: https://github.com/messense/aliyundrive-webdav.git
     branch: main
-
   - name: passwall_packages
     uri: https://github.com/xiaorouji/openwrt-passwall.git
     branch: packages
   - name: passwall_luci
     uri: https://github.com/xiaorouji/openwrt-passwall.git
     branch: luci
-
   - name: helloworld
     uri: https://github.com/fw876/helloworld.git
     branch: master
   - name: OpenClash
     uri: https://github.com/vernesong/OpenClash.git
     branch: master
+  - name: pushbot
+    uri: https://github.com/zzsj0928/luci-app-pushbot.git
+    branch: master
+  - name: alist
+    uri: https://github.com/sbwml/luci-app-alist.git
+    branch: master
+
 packages:
   - luci-app-ssr-plus
   - luci-app-openclash
@@ -28,7 +30,6 @@ packages:
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
   - luci-app-alist
-
 
 
 diffconfig: |

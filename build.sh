@@ -97,18 +97,14 @@ target_mt7981_gl-mt2500 | \
     target_mt7981_gl-mt3000)
     python3 setup.py -c configs/config-mt798x-7.6.6.1.yml
     ln -s $base/gl-infra-builder/mt7981 ~/openwrt && cd ~/openwrt
-    
-    #####自定义↓↓↓
 
-    #luci-theme-argon
-    git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-    #版本信息
-    echo $glversion1 > ./files/etc/glversion
-    echo $glversion2 > ./files/etc/version.type
-
-    #####自定义↑↑↑
-    xadd=""
-    if [[ $istore == true ]]; then xadd=" istore"; fi
+    if [[ $istore == true ]]; then
+        xadd=" istore"
+    else
+        xadd=""
+        #luci-theme-argon
+        git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+    fi
 
     if [[ $ui == true ]]; then
         ./scripts/gen_config.py $profile glinet_depends glinet_nas custom $xadd
@@ -126,6 +122,10 @@ target_mt7981_gl-mt2500 | \
     rm -rf feeds/packages/lang/golang
     svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
     git clone https://github.com/sbwml/luci-app-alist package/alist
+
+    #版本信息,没用?
+    echo $glversion1 >./files/etc/glversion
+    echo $glversion2 >./files/etc/version.type
     #####自定义↑↑↑
     build_firmware $ui mt7981 && copy_file ~/openwrt/bin/targets/*/*
     ;;
