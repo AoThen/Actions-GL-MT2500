@@ -23,7 +23,7 @@ on:
       record:
         description: "输入描述"
         required: false
-        default: "openclash"
+        default: "测试alist和istore"
         type: string
       glversion1:
         description: "版本"
@@ -56,14 +56,10 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - name: Initialization and update environment
+      - name: Initialization environment
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-          sudo apt -y autoremove --purge
-          sudo apt -y clean
-
           sudo apt update -y
           sudo apt upgrade -y
           sudo apt install python build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml subversion -y
