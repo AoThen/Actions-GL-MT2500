@@ -50,6 +50,8 @@ on:
         default: false
         type: boolean
 
+#          sudo apt upgrade -y会报错
+
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -115,3 +117,8 @@ jobs:
           body: ${{ inputs.record }}
           tag_name: ${{ steps.tag.outputs.release_tag }}
           files: ${{ env.FIRMWARE }}/*
+
+      - name: Pushplus Info
+        if: steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        run: |
+          curl http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=${{ env.DEVICE_NAME }}&content=${{ env.FILE_DATE }}&template=txt
