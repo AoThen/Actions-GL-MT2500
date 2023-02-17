@@ -55,9 +55,8 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
+      - name: update
         uses: actions/checkout@v3
-      - name: Initialization environment
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
@@ -65,14 +64,14 @@ jobs:
           sudo apt update -y
           sudo apt upgrade -y
           sudo apt install python build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml subversion -y
-          sudo -E apt-get -qq autoremove --purge
+          sudo -E apt-get -qq autoremove
           sudo -E apt-get -qq clean
           sudo timedatectl set-timezone "Asia/Shanghai"
           git config --global user.email "AoThen@Github.com"
           git config --global user.name "AoThen"
       - name: make
         run: |
-          chmod +x ./build.sh
+          sudo chmod +x ./build.sh
           ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }} ${{ inputs.glversion1 }} ${{ inputs.glversion2 }} ${{ inputs.istore }}
 
       - name: Organize files
