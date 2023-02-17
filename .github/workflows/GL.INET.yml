@@ -57,9 +57,13 @@ jobs:
       - uses: actions/checkout@v3
       - name: update
         run: |
+          sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo apt update -y
-          sudo apt upgrade -y
+
           sudo apt install python build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml subversion -y
+          sudo -E apt-get -qq autoremove --purge
+          sudo -E apt-get -qq clean
+          sudo timedatectl set-timezone "Asia/Shanghai"
           git config --global user.email "AoThen@Github.com"
           git config --global user.name "AoThen"
       - name: make
