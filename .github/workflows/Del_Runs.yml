@@ -5,11 +5,11 @@ on:
       days:
         description: 'Number of days.'
         required: true
-        default: 30
+        default: 0
       minimum_runs:
         description: 'The minimum runs to keep for each workflow.'
         required: true
-        default: 6
+        default: 0
       delete_workflow_pattern:
         description: 'The name or filename of the workflow. if not set then it will target all workflows.'
         required: false
@@ -27,7 +27,7 @@ on:
       delete_run_by_conclusion_pattern:
         description: 'Remove workflow by conclusion: action_required, cancelled, failure, skipped, success'
         required: true
-        default: "All"
+        default: "failure"
         type: choice
         options:
           - "All"
