@@ -110,7 +110,7 @@ jobs:
         id: tag
         if: true && !failure() && !cancelled()
         run: |
-          echo "release_tag=${{inputs.device}}.${{ inputs.ui }}.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+          echo "release_tag=${{inputs.device}}.ui_${{ inputs.ui }}.istore_${{ inputs.istore }}.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Upload firmware to release
