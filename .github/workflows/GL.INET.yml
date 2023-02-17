@@ -1,6 +1,7 @@
 name: Build GL.INET
 
 on:
+  # 手动触发事件
   workflow_dispatch:
     inputs:
       device:
@@ -39,6 +40,11 @@ on:
         required: false
         default: true
         type: boolean
+      istore:
+        description: "是否包含istore(目前支持MT-2500/MT-3000)"
+        required: false
+        default: false
+        type: boolean
       release:
         description: "上传到release"
         required: false
@@ -61,7 +67,7 @@ jobs:
       - name: make
         run: |
           chmod +x ./build.sh
-          ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }} ${{ inputs.glversion1 }} ${{ inputs.glversion2 }}
+          ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }} ${{ inputs.glversion1 }} ${{ inputs.glversion2 }} ${{ inputs.istore }}
 
       - name: Organize files
         id: organize

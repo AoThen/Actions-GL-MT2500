@@ -6,6 +6,8 @@ ui=$3
 glversion1=$4
 glversion2=$5
 
+istore=$6
+
 echo $base
 if [ ! -e "$base" ]; then
     echo "Please enter base folder"
@@ -109,10 +111,11 @@ target_mt7981_gl-mt2500 | \
     git clone https://github.com/sbwml/luci-app-alist package/alist
 
     #####自定义
-
+    xadd=""
+    if [[ $istore == true ]]; then xadd=" istore"; fi
 
     if [[ $ui == true ]]; then
-        ./scripts/gen_config.py $profile glinet_depends glinet_nas custom
+        ./scripts/gen_config.py $profile glinet_depends glinet_nas custom $xadd
         git clone https://github.com/gl-inet/glinet4.x.git ~/glinet
         if [[ $profile == *mt3000* ]]; then
             cp -rf ~/glinet/pkg_config/gl_pkg_config_mt7981_mt3000.mk ~/glinet/mt7981/gl_pkg_config.mk
@@ -120,7 +123,7 @@ target_mt7981_gl-mt2500 | \
             cp -rf ~/glinet/pkg_config/gl_pkg_config_mt7981_mt2500.mk ~/glinet/mt7981/gl_pkg_config.mk
         fi
     else
-        ./scripts/gen_config.py $profile glinet_nas custom
+        ./scripts/gen_config.py $profile glinet_nas custom $xadd
     fi
     build_firmware $ui mt7981 && copy_file ~/openwrt/bin/targets/*/*
     ;;
