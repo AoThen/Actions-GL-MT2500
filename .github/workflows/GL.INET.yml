@@ -49,6 +49,11 @@ on:
         required: false
         default: false
         type: boolean
+      pushplus:
+        description: "成功通知"
+        required: false
+        default: true
+        type: boolean
 
 #          sudo apt upgrade -y会报错
 
@@ -110,7 +115,7 @@ jobs:
 
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
-        if: ${{ inputs.ui }} == true && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        if: ${{ inputs.release }} == true && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_FIRMWARE }}
         with:
@@ -119,6 +124,6 @@ jobs:
           files: ${{ env.FIRMWARE }}/*
 
       - name: Pushplus Info
-        if: steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        if: ${{ inputs.pushplus }} == true && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         run: |
           curl http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=${{ env.DEVICE_NAME }}&content=${{ env.FILE_DATE }}&template=txt
