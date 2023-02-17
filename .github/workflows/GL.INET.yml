@@ -78,6 +78,11 @@ jobs:
           sudo chmod +x ./build.sh
           ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }} ${{ inputs.glversion1 }} ${{ inputs.glversion2 }} ${{ inputs.istore }}
 
+      - name: Pushplus Info
+        if: ${{ inputs.pushplus }} == true && ${{ failure() }}
+        run: |
+          curl http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=failure_${{ env.DEVICE_NAME }}&content=${{ env.FILE_DATE }}&template=txt
+
       - name: Organize files
         id: organize
         if: true && !failure() && !cancelled()
@@ -89,7 +94,7 @@ jobs:
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Check space usage
-        if: (!cancelled())
+        if: ${{ !cancelled() }}
         run: df -hT
 
       - name: Upload firmware directory
@@ -126,4 +131,4 @@ jobs:
       - name: Pushplus Info
         if: ${{ inputs.pushplus }} == true && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         run: |
-          curl http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=${{ env.DEVICE_NAME }}&content=${{ env.FILE_DATE }}&template=txt
+          curl http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=success_${{ env.DEVICE_NAME }}&content=${{ env.FILE_DATE }}&template=txt

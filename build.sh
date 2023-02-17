@@ -124,8 +124,8 @@ target_mt7981_gl-mt2500 | \
     git clone https://github.com/sbwml/luci-app-alist package/alist
 
     #版本信息,没用?
-    echo $glversion1 >./files/etc/glversion
-    echo $glversion2 >./files/etc/version.type
+    echo $glversion1 >files/etc/glversion
+    echo $glversion2 >files/etc/version.type
     #####自定义↑↑↑
     build_firmware $ui mt7981 && copy_file ~/openwrt/bin/targets/*/*
     ;;
