@@ -40,6 +40,7 @@ diffconfig: |
   CONFIG_PACKAGE_aliyundrive-webdav=y
   CONFIG_PACKAGE_luci-app-aliyundrive-webdav=y
   CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn=y
+  CONFIG_PACKAGE_luci-app-pushbot=y
   CONFIG_PACKAGE_alist=y
   CONFIG_PACKAGE_luci-app-alist=y
   CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
