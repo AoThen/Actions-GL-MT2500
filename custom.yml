@@ -27,6 +27,7 @@ packages:
   - luci-app-pushbot
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
+  - alist
   - luci-app-alist
 
 
