@@ -22,6 +22,10 @@ feeds:
   - name: pushbot
     uri: https://github.com/zzsj0928/luci-app-pushbot.git
     branch: master
+  - name: dockerman
+    uri: https://github.com/lisaac/luci-app-dockerman.git
+    branch: master
+
 
 packages:
   - luci-app-ssr-plus
@@ -30,7 +34,8 @@ packages:
   - luci-app-passwall
   - luci-app-alist
   - luci-app-pushbot
-
+  - luci-app-dockerman
+  - luci-lib-docker
 
 diffconfig: |
   CONFIG_PACKAGE_dnsmasq=n
@@ -50,6 +55,17 @@ diffconfig: |
   CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_IPT2Socks=y
   CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
   CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=y
+  CONFIG_PACKAGE_kmod-fs-btrfs=y
+  CONFIG_PACKAGE_kmod-dm=y
+  CONFIG_PACKAGE_kmod-ikconfig=y
+  CONFIG_PACKAGE_kmod-nf-ipvs=y
+  CONFIG_PACKAGE_kmod-veth=y
+  CONFIG_PACKAGE_docker=y
+  CONFIG_PACKAGE_luci-lib-jsonc=y
+  CONFIG_PACKAGE_luci-app-dockerman=y
+  CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=y
+  CONFIG_PACKAGE_luci-lib-docker=y
+
   CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
   CONFIG_PACKAGE_luci-theme-argon=y
   CONFIG_LUCI_LANG_zh_Hans=y
