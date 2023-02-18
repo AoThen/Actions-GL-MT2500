@@ -99,12 +99,16 @@ target_mt7981_gl-mt2500 | \
     ln -s $base/gl-infra-builder/mt7981 ~/openwrt && cd ~/openwrt
 
     if [[ $istore == true ]]; then
-        xadd=" istore"
+        xadd="istore"
     else
         xadd=""
         #luci-theme-argon
         git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
     fi
+    #luci-app-pushbot
+    git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+    git clone https://github.com/sbwml/luci-app-alist package/alist
+
 
     if [[ $ui == true ]]; then
         ./scripts/gen_config.py $profile glinet_depends glinet_nas custom $xadd
@@ -121,7 +125,6 @@ target_mt7981_gl-mt2500 | \
     #luci-app-alist
     rm -rf feeds/packages/lang/golang
     svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
-    git clone https://github.com/sbwml/luci-app-alist package/alist
 
     #版本信息,没用?
     echo $glversion1 >files/etc/glversion
