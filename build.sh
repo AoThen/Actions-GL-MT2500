@@ -26,6 +26,11 @@ fi
 if [ ! -n "$ui" ]; then
     ui=true
 fi
+
+if [ ! -n "$istore" ]; then
+    istore=true
+fi
+
 echo "Start..."
 
 #clone source tree
