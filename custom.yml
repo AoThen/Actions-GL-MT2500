@@ -19,9 +19,7 @@ feeds:
   - name: pushbot
     uri: https://github.com/zzsj0928/luci-app-pushbot.git
     branch: master
-  - name: alist
-    uri: https://github.com/sbwml/luci-app-alist.git
-    branch: master
+
 
 packages:
   - luci-app-ssr-plus
@@ -29,6 +27,7 @@ packages:
   - luci-app-pushbot
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
+  - alist
   - luci-app-alist
 
 
