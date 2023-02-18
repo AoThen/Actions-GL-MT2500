@@ -93,7 +93,7 @@ jobs:
           ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }} ${{ inputs.glversion1 }} ${{ inputs.glversion2 }} ${{ inputs.istore }}
 
       - name: Pushplus Info
-        if: ${{ inputs.pushplus }} == true && ${{ failure() }}
+        if: ${{ inputs.pushplus }} == true && failure()
         run: |
           curl "http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=failure&content=${{ inputs.device }}&template=txt"
 
@@ -108,7 +108,7 @@ jobs:
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Check space usage
-        if: ${{ !cancelled() }}
+        if: (!cancelled())
         run: df -hT
 
       - name: Upload firmware directory
