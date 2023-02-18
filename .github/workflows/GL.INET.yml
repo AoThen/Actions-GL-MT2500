@@ -73,6 +73,20 @@ jobs:
           sudo timedatectl set-timezone "Asia/Shanghai"
           git config --global user.email "AoThen@Github.com"
           git config --global user.name "AoThen"
+
+      - name: inputs Info
+        run: |
+          echo "
+          device: ${{ inputs.device }}
+          record: ${{ inputs.record }}
+          glversion1: ${{ inputs.glversion1 }}
+          glversion2: ${{ inputs.glversion2 }}
+          ui: ${{ inputs.ui }}
+          istore: ${{ inputs.istore }}
+          release: ${{ inputs.release }}
+          pushplus: ${{ inputs.pushplus }}
+          "
+
       - name: make
         run: |
           sudo chmod +x ./build.sh
