@@ -16,15 +16,20 @@ feeds:
   - name: OpenClash
     uri: https://github.com/vernesong/OpenClash.git
     branch: master
-
-
+  - name: alist
+    uri: https://github.com/sbwml/luci-app-alist.git
+    branch: master
+  - name: pushbot
+    uri: https://github.com/zzsj0928/luci-app-pushbot.git
+    branch: master
 
 packages:
   - luci-app-ssr-plus
   - luci-app-openclash
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
-
+  - luci-app-alist
+  - luci-app-pushbot
 
 
 diffconfig: |

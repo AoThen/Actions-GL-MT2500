@@ -112,7 +112,7 @@ target_mt7981_gl-mt2500 | \
     fi
 
     #luci-app-pushbot
-    git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+    # git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 
     if [[ $ui == true ]]; then
         ./scripts/gen_config.py $profile glinet_depends glinet_nas custom $xadd
@@ -127,7 +127,7 @@ target_mt7981_gl-mt2500 | \
     fi
     #####自定义↓↓↓
 
-    #luci-app-alist
+    #luci-app-alist （在 ./scripts/feeds install -a 操作之后更换 golang 版本）
     # rm -rf feeds/packages/lang/golang
     # svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
     # git clone https://github.com/sbwml/luci-app-alist package/alist

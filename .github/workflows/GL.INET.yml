@@ -50,7 +50,7 @@ on:
         default: false
         type: boolean
       pushplus:
-        description: "成功通知"
+        description: "Pushplus通知"
         required: false
         default: true
         type: boolean
@@ -66,7 +66,7 @@ jobs:
         run: |
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo apt update -y
-
+          sudo apt install libfuse-dev -y
           sudo apt install python build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml subversion -y
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
