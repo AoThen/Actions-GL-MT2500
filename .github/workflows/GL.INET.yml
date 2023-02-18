@@ -81,7 +81,7 @@ jobs:
       - name: Pushplus Info
         if: ${{ inputs.pushplus }} == true && ${{ failure() }}
         run: |
-          curl http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=failure_${{ env.DEVICE_NAME }}&content=${{ env.FILE_DATE }}&template=txt
+          curl http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=${{ inputs.device }}&content=failure&template=txt
 
       - name: Organize files
         id: organize
@@ -131,4 +131,4 @@ jobs:
       - name: Pushplus Info
         if: ${{ inputs.pushplus }} == true && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         run: |
-          curl http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=success_${{ env.DEVICE_NAME }}&content=${{ env.FILE_DATE }}&template=txt
+          curl http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=success&content=${{ inputs.device }}&template=txt
