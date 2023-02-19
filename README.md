@@ -12,6 +12,9 @@
 - passwall **(旁路由没成功)**
 - aliyundrive-webdav
 - luci-app-pushbot?
+- luci-app-broadbandacc
+- luci-app-serverchan
+- luci-lib-docker
 - luci-app-alist? **（GL-MT2500是21.02，需要改golang版本）**
 - istore? **(自选)**
 - 

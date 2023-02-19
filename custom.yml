@@ -30,7 +30,7 @@ feeds:
     branch: master
   - name: broadbandacc
     uri: https://github.com/AoThen/luci-app-broadbandacc.git
-    branch: master
+    branch: main
 packages:
   - luci-app-ssr-plus
   - luci-app-openclash
