@@ -3,6 +3,9 @@
 
 ![GL-MT2500](https://github.com/AoThen/Actions-GL-MT2500/actions/workflows/GL.INET.yml/badge.svg)
 
+固件版本OpenWrt 21.02
+
+内核版本5.4.211
 
 # 编译包
 - 因为固件自带adguardhome的原因就不额外编译了   [**(路由器地址)**](http://192.168.8.1/#/adguardhome)
@@ -11,10 +14,11 @@
 - helloworld **(旁路由最好用,接口控制不绑定)**
 - passwall **(旁路由没成功)**
 - aliyundrive-webdav
+- 以下插件测试中
 - luci-app-pushbot?
-- luci-app-broadbandacc
-- luci-app-serverchan
-- luci-lib-docker
+- luci-app-broadbandacc?
+- luci-app-serverchan?
+- luci-lib-docker?
 - luci-app-alist? **（GL-MT2500是21.02，需要改golang版本）**
 - istore? **(自选)**
 - 

@@ -22,17 +22,17 @@ on:
       record:
         description: "输入描述"
         required: false
-        default: "测试alist和istore"
+        default: "测试插件和istore"
         type: string
       glversion1:
         description: "版本"
         required: false
-        default: "2.0"
+        default: "kernel-5.4.211"
         type: string
       glversion2:
         description: "固件类型"
         required: false
-        default: "AoThen"
+        default: "OpenWrt-21.02"
         type: string
       ui:
         description: "是否包含官方UI (目前支持IPQ6018系列、mt7981系列和GL-A1300)"
@@ -149,4 +149,4 @@ jobs:
       - name: Pushplus Info
         if: ${{ inputs.pushplus }} == true && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         run: |
-          curl "http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=Success_MT2500&content=${{ inputs.device }}&template=txt"
+          curl "http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=Actions_Success&content=${{ inputs.device }}&template=txt"
