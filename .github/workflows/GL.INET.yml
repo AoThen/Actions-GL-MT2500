@@ -27,7 +27,7 @@ on:
       glversion1:
         description: "版本"
         required: false
-        default: "kernel-5.4.211"
+        default: "5.4.211"
         type: string
       glversion2:
         description: "固件类型"
