@@ -25,7 +25,9 @@ feeds:
   - name: dockerman
     uri: https://github.com/lisaac/luci-app-dockerman.git
     branch: master
-
+  - name: serverchan
+    uri: https://github.com/tty228/luci-app-serverchan.git
+    branch: master
 
 packages:
   - luci-app-ssr-plus
@@ -34,6 +36,7 @@ packages:
   - luci-app-passwall
   - luci-app-alist
   - luci-app-pushbot
+  - luci-app-serverchan
   - luci-app-dockerman
   - luci-lib-docker
 
@@ -46,6 +49,7 @@ diffconfig: |
   CONFIG_PACKAGE_luci-app-aliyundrive-webdav=y
   CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn=y
   CONFIG_PACKAGE_luci-app-pushbot=y
+  CONFIG_PACKAGE_luci-app-serverchan=y
   CONFIG_PACKAGE_alist=y
   CONFIG_PACKAGE_luci-app-alist=y
   CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
