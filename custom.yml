@@ -28,7 +28,9 @@ feeds:
   - name: serverchan
     uri: https://github.com/tty228/luci-app-serverchan.git
     branch: master
-
+  - name: broadbandacc
+    uri: https://github.com/AoThen/luci-app-broadbandacc.git
+    branch: master
 packages:
   - luci-app-ssr-plus
   - luci-app-openclash
@@ -37,6 +39,7 @@ packages:
   - luci-app-alist
   - luci-app-pushbot
   - luci-app-serverchan
+  - luci-app-broadbandacc
   - luci-app-dockerman
   - luci-lib-docker
 
@@ -44,6 +47,7 @@ diffconfig: |
   CONFIG_PACKAGE_dnsmasq=n
   CONFIG_PACKAGE_dnsmasq-full=y
   CONFIG_PACKAGE_luci-compat=y
+  CONFIG_PACKAGE_luci-app-broadbandacc=y
   CONFIG_PACKAGE_luci-app-openclash=y
   CONFIG_PACKAGE_aliyundrive-webdav=y
   CONFIG_PACKAGE_luci-app-aliyundrive-webdav=y
