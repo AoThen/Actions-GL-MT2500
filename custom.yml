@@ -19,9 +19,6 @@ feeds:
   - name: alist
     uri: https://github.com/sbwml/luci-app-alist.git
     branch: master
-  - name: dockerman
-    uri: https://github.com/lisaac/luci-app-dockerman.git
-    branch: master
 
 packages:
   - luci-app-ssr-plus
@@ -29,45 +26,37 @@ packages:
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
   - luci-app-alist
-  - luci-app-dockerman
 
 diffconfig: |
   CONFIG_PACKAGE_dnsmasq=n
   CONFIG_PACKAGE_dnsmasq-full=y
   CONFIG_PACKAGE_luci-compat=y
   CONFIG_PACKAGE_luci-app-openclash=y
+
   CONFIG_PACKAGE_aliyundrive-webdav=y
   CONFIG_PACKAGE_luci-app-aliyundrive-webdav=y
   CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn=y
 
   CONFIG_PACKAGE_luci-app-serverchan=y
   CONFIG_PACKAGE_luci-app-broadbandacc=y
+
   CONFIG_PACKAGE_alist=y
   CONFIG_PACKAGE_luci-app-alist=y
   CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
+
   CONFIG_PACKAGE_luci-app-passwall=y
   CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
+  
   CONFIG_PACKAGE_luci-app-ssr-plus=y
   CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_IPT2Socks=y
   CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
   CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=y
-  CONFIG_PACKAGE_kmod-fs-btrfs=y
-  CONFIG_PACKAGE_kmod-dm=y
-  CONFIG_PACKAGE_kmod-ikconfig=y
-  CONFIG_PACKAGE_kmod-nf-ipvs=y
-  CONFIG_PACKAGE_kmod-veth=y
-  CONFIG_PACKAGE_docker=y
-  CONFIG_PACKAGE_dockerd=y
-  CONFIG_PACKAGE_ttyd=y
-  CONFIG_PACKAGE_luci-lib-ip=y
-  CONFIG_PACKAGE_luci-lib-jsonc=y
-  CONFIG_PACKAGE_luci-app-dockerman=y
-  CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=y
-  CONFIG_PACKAGE_luci-lib-docker=y
+
+  CONFIG_PACKAGE_luci-theme-argon=y
 
   CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
-  CONFIG_PACKAGE_luci-theme-argon=y
   CONFIG_LUCI_LANG_zh_Hans=y
+  CONFIG_PACKAGE_luci-lib-ip=y
   CONFIG_BUSYBOX_CUSTOM=y
   CONFIG_BUSYBOX_CONFIG_FEATURE_FLOAT_SLEEP=y
 
