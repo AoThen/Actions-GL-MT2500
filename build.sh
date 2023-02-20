@@ -33,6 +33,8 @@ fi
 
 echo "Start..."
 
+
+
 #clone source tree
 git clone https://github.com/gl-inet/gl-infra-builder.git $base/gl-infra-builder
 cp -r custom/ $base/gl-infra-builder/feeds/custom/
@@ -113,6 +115,11 @@ target_mt7981_gl-mt2500 | \
 
     #luci-app-pushbot
     # git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+
+    #自定义
+    svn export https://github.com/tty228/luci-app-serverchan/trunk package/luci-app-serverchan
+    svn export https://github.com/AoThen/luci-app-broadbandacc/trunk package/luci-app-broadbandacc
+    svn export https://github.com/zzsj0928/luci-app-pushbot/trunk package/luci-app-pushbot
 
     if [[ $ui == true ]]; then
         ./scripts/gen_config.py $profile glinet_depends glinet_nas custom $xadd
