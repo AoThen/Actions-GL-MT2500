@@ -12,15 +12,14 @@
 - luci-theme-argon主题
 - openclash **(旁路由成功)**
 - helloworld **(旁路由最好用,接口控制不绑定)**
-- passwall **(旁路由没成功)**
 - aliyundrive-webdav
-- luci-app-alist **（GL-MT2500是21.02，需要改golang版本）**
+- luci-app-alist **（GL-MT2500是21.02，需要改golang版本，目前挂载有问题）**
+- istore **(自选)**
+- luci-app-broadbandacc
+- luci-app-serverchan
 - 以下插件测试中
-- istore? **(自选)**
-- luci-lib-dockerman? 手动去软件包里安装dockerd
-- luci-app-broadbandacc?
-- luci-app-pushbot?
-- luci-app-serverchan?
+- passwall **(旁路由没成功,有问题)**
+- luci-lib-dockerman?
 - 
 
 
