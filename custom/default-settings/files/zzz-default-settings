@@ -1,11 +1,11 @@
 #!/bin/sh
 
-# 没用好像？
+# 没用？
 #config system
-uci set system.@system[0].timezone=CST-8
-uci set system.@system[0].zonename=Asia/Shanghai
+# uci set system.@system[0].timezone=CST-8
+# uci set system.@system[0].zonename=Asia/Shanghai
 # uci del system.led_wan
-uci commit system
+# uci commit system
 
 # config wireless
 # uci set wireless.radio0.cell_density='0'
