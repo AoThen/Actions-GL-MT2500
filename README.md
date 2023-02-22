@@ -18,8 +18,9 @@
 - luci-app-broadbandacc
 - luci-app-serverchan
 - 以下插件测试中
+- netspeedtest
 - passwall **(旁路由没成功,有问题)**
-- luci-lib-dockerman?
+- ~~luci-lib-dockerman~~
 - 
 
 
@@ -31,3 +32,5 @@
 > https://github.com/luochongjun/gl-sdk-action
 > 
 > [P3TERX](https://p3terx.com)
+>
+> https://github.com/ecrasy/BuildOpenWrt

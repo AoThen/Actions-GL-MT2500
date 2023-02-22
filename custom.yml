@@ -28,6 +28,8 @@ packages:
   - luci-app-alist
 
 diffconfig: |
+  CONFIG_PACKAGE_wpad-basic=n
+  CONFIG_PACKAGE_wpad=n
   CONFIG_PACKAGE_dnsmasq=n
   CONFIG_PACKAGE_dnsmasq-full=y
   CONFIG_PACKAGE_luci-compat=y
@@ -44,6 +46,11 @@ diffconfig: |
   CONFIG_PACKAGE_luci-app-alist=y
   CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
 
+  CONFIG_PACKAGE_luci-app-netspeedtest=y
+  CONFIG_PACKAGE_luci-i18n-netspeedtest-zh-cn=y
+
+  CONFIG_PACKAGE_libuv=y
+  CONFIG_PACKAGE_libwebsockets-full=y
 
   CONFIG_PACKAGE_luci-app-passwall=y
   CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy=y

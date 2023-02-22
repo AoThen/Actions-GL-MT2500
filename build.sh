@@ -122,6 +122,7 @@ target_mt7981_gl-mt2500 | \
     #自定义
     svn export https://github.com/tty228/luci-app-serverchan/trunk package/luci-app-serverchan
     svn export https://github.com/AoThen/luci-app-broadbandacc/trunk package/luci-app-broadbandacc
+    svn export https://github.com/sirpdboy/netspeedtest/trunk package/netspeedtest
     # svn export https://github.com/zzsj0928/luci-app-pushbot/trunk package/luci-app-pushbot     CONFIG_PACKAGE_luci-app-pushbot=y
 
     if [[ $ui == true ]]; then
