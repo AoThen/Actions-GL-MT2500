@@ -138,7 +138,7 @@ jobs:
 
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
-        if: ${{ inputs.release }} == true && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        if: ${{ inputs.release }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_FIRMWARE }}
         with:
@@ -147,6 +147,6 @@ jobs:
           files: ${{ env.FIRMWARE }}/*
 
       - name: Pushplus Info
-        if: ${{ inputs.pushplus }} == true && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        if: ${{ inputs.pushplus }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         run: |
           curl "http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=Actions_Success&content=${{ inputs.device }}&template=txt"
