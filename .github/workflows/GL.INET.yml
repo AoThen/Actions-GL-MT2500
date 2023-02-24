@@ -44,6 +44,11 @@ on:
         required: false
         default: false
         type: boolean
+      isdocker:
+        description: "是否包含docker"
+        required: false
+        default: false
+        type: boolean
       release:
         description: "上传到release"
         required: false
@@ -90,7 +95,7 @@ jobs:
       - name: make
         run: |
           sudo chmod +x ./build.sh
-          ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }} ${{ inputs.glversion1 }} ${{ inputs.glversion2 }} ${{ inputs.istore }}
+          ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }} ${{ inputs.glversion1 }} ${{ inputs.glversion2 }} ${{ inputs.istore }} ${{ inputs.isdocker }}
 
       - name: Organize files
         id: organize

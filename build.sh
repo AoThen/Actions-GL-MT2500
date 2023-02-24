@@ -7,6 +7,7 @@ glversion1=$4
 glversion2=$5
 
 istore=$6
+isdocker=$7
 
 echo $base
 if [ ! -e "$base" ]; then
@@ -29,6 +30,10 @@ fi
 
 if [ ! -n "$istore" ]; then
     istore=true
+fi
+
+if [ ! -n "$isdocker" ]; then
+    isdocker=true
 fi
 
 echo "Start..."
@@ -114,6 +119,11 @@ target_mt7981_gl-mt2500 | \
         xadd=""
         #luci-theme-argon
         git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+    fi
+
+    if [[ $isdocker == true ]]; 
+    then
+        xadd="$xadd docker"
     fi
 
     #luci-app-pushbot
