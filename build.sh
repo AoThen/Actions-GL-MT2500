@@ -46,8 +46,8 @@ cp -r custom/ $base/gl-infra-builder/feeds/custom/
 cp -r *.yml $base/gl-infra-builder/profiles
 cd $base/gl-infra-builder
 
-# Modify default IP
-sed -i 's/192.168.8.1/192.168.31.2/g' patches-siflower-18.x/0103-fix-modify-the-Siflower-SDK-according-to-the-feature.patch
+# Modify default IP 没用?
+# sed -i 's/192.168.8.1/192.168.31.2/g' patches-siflower-18.x/0103-fix-modify-the-Siflower-SDK-according-to-the-feature.patch
 
 function build_firmware() {
     cd ~/openwrt

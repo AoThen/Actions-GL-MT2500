@@ -22,7 +22,7 @@ on:
       record:
         description: "输入描述"
         required: false
-        default: "测试插件和istore"
+        default: "测试新增插件"
         type: string
       glversion1:
         description: "版本"

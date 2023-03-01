@@ -9,18 +9,18 @@
 
 # 编译包
 - 因为固件自带adguardhome的原因就不额外编译了   [**(路由器地址)**](http://192.168.8.1/#/adguardhome)
-- luci-theme-argon主题
+- luci-theme-argon主题 **(和istore不同时存在)**
 - openclash **(旁路由成功)**
-- helloworld **(旁路由最好用,接口控制不绑定)**
+- helloworld **(旁路由最推荐,接口控制不绑定)**
 - aliyundrive-webdav
-- luci-app-alist **（GL-MT2500是21.02，需要改golang版本，目前挂载有问题）**
+- luci-app-alist **（GL-MT2500是21.02，需要改golang版本，目前挂载Webdav有问题）**
 - istore **(自选)**
 - luci-app-broadbandacc
 - luci-app-serverchan
+- luci-lib-dockerman
+- netspeedtest **(和istore冲突)**
 - 以下插件测试中
-- netspeedtest
-- passwall **(旁路由没成功,有问题)**
-- ~~luci-lib-dockerman~~
+- passwall **(旁路由没成功,待测试正常路由模式)**
 - 
 
 
