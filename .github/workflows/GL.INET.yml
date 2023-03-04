@@ -22,7 +22,7 @@ on:
       record:
         description: "输入描述"
         required: false
-        default: "测试新增插件"
+        default: "测试版"
         type: string
       glversion1:
         description: "版本"
@@ -47,7 +47,7 @@ on:
       isdocker:
         description: "是否包含docker"
         required: false
-        default: false
+        default: true
         type: boolean
       release:
         description: "上传到release"
@@ -59,7 +59,9 @@ on:
         required: false
         default: true
         type: boolean
-
+  push:
+    branches:
+      - main
 #          sudo apt upgrade -y会报错
 
 jobs:
