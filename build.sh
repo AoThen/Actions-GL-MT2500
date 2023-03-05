@@ -43,7 +43,7 @@ echo "Start..."
 #clone source tree
 git clone https://github.com/gl-inet/gl-infra-builder.git $base/gl-infra-builder
 cd $base/gl-infra-builder
-git reset --hard 820b9fd19f1b1fbf56dd8ae613654199f42f92ee
+git reset --hard 850c08a96574da7a10e021802a610b3a2c7bdfbc
 cd ..
 cp -r custom/  $base/gl-infra-builder/feeds/custom/
 cp -r *.yml $base/gl-infra-builder/profiles
@@ -121,7 +121,7 @@ target_mt7981_gl-mt2500 | \
     else
         xadd=""
         #luci-theme-argon
-        git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+        git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
     fi
 
     if [[ $isdocker == true ]]; 
@@ -163,7 +163,7 @@ target_mt7981_gl-mt2500 | \
     #luci-app-alist （在 ./scripts/feeds install -a 操作之后更换 golang 版本）
     # rm -rf feeds/packages/lang/golang
     # svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
-    # git clone https://github.com/sbwml/luci-app-alist package/alist
+    # git clone --depth 1 https://github.com/sbwml/luci-app-alist package/alist
 
     #版本信息
     echo $glversion1 >files/etc/glversion
