@@ -43,8 +43,8 @@ echo "Start..."
 #clone source tree
 git clone https://github.com/gl-inet/gl-infra-builder.git $base/gl-infra-builder
 cd $base/gl-infra-builder
-git reset --hard 850c08a96574da7a10e021802a610b3a2c7bdfbc
-cd ..
+git reset --hard 2432dcfb4162f9cbaa816e7de3086d5a22ffea88
+cd $base
 cp -r custom/  $base/gl-infra-builder/feeds/custom/
 cp -r *.yml $base/gl-infra-builder/profiles
 cd $base/gl-infra-builder
