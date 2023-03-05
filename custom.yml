@@ -1,6 +1,9 @@
 feeds:
   - name: custom
     path: ../feeds_dir/custom
+  - name: helloworld
+    uri: https://github.com/fw876/helloworld.git
+    branch: master
   - name: aliyundrive
     uri: https://github.com/messense/aliyundrive-webdav.git
     branch: main
@@ -10,9 +13,6 @@ feeds:
   - name: passwall_luci
     uri: https://github.com/xiaorouji/openwrt-passwall.git
     branch: luci
-  - name: helloworld
-    uri: https://github.com/fw876/helloworld.git
-    branch: master
   - name: OpenClash
     uri: https://github.com/vernesong/OpenClash.git
     branch: master

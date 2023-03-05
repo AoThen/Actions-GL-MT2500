@@ -42,6 +42,9 @@ echo "Start..."
 
 #clone source tree
 git clone https://github.com/gl-inet/gl-infra-builder.git $base/gl-infra-builder
+cd $base/gl-infra-builder
+git reset --hard 820b9fd19f1b1fbf56dd8ae613654199f42f92ee
+cd ..
 cp -r custom/  $base/gl-infra-builder/feeds/custom/
 cp -r *.yml $base/gl-infra-builder/profiles
 cd $base/gl-infra-builder
@@ -144,6 +147,9 @@ target_mt7981_gl-mt2500 | \
     if [[ $ui == true ]]; then
         ./scripts/gen_config.py $profile glinet_depends glinet_nas custom $xadd
         git clone https://github.com/gl-inet/glinet4.x.git ~/glinet
+        cd ~/glinet
+        git reset --hard 8e665c49ca24550c53ba95bf6b705783cff90dc1
+        cd ..
         if [[ $profile == *mt3000* ]]; then
             cp -rf ~/glinet/pkg_config/gl_pkg_config_mt7981_mt3000.mk ~/glinet/mt7981/gl_pkg_config.mk
         else

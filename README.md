@@ -17,7 +17,7 @@
 - istore **(自选)**
 - luci-app-broadbandacc
 - luci-app-serverchan
-- luci-lib-dockerman
+- docker和luci-lib-dockerman
 - netspeedtest **(和istore冲突)**
 - 以下插件测试中
 - passwall **(旁路由没成功,待测试正常路由模式)**
@@ -34,3 +34,6 @@
 > [P3TERX](https://p3terx.com)
 >
 > https://github.com/ecrasy/BuildOpenWrt
+> 
+> https://github.com/draco-china/Draco-OpenWrt-GL-AX1800
+> 

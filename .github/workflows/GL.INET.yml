@@ -47,7 +47,7 @@ on:
       isdocker:
         description: "是否包含docker"
         required: false
-        default: false
+        default: true
         type: boolean
       release:
         description: "上传到release"
