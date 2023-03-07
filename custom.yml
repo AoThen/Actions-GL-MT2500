@@ -1,6 +1,4 @@
 feeds:
-  - name: custom
-    path: ../feeds_dir/custom
   - name: aliyundrive
     uri: https://github.com/messense/aliyundrive-webdav.git
     branch: main
