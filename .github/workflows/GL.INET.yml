@@ -147,7 +147,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: ${{ inputs.release }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_FIRMWARE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           body: ${{ inputs.record }}
           tag_name: ${{ steps.tag.outputs.release_tag }}
