@@ -143,7 +143,7 @@ target_mt7981_gl-mt2500 | \
 
 
     if [[ $ui == true ]]; then
-        ./scripts/gen_config.py $profile luci glinet_depends glinet_nas custom $xadd
+        ./scripts/gen_config.py $profile glinet_depends glinet_nas custom $xadd
         git clone https://github.com/gl-inet/glinet4.x.git ~/glinet
         # cd ~/glinet
         # git reset --hard 8e665c49ca24550c53ba95bf6b705783cff90dc1
