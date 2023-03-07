@@ -42,7 +42,7 @@ echo "Start..."
 
 #clone source tree
 git clone https://github.com/gl-inet/gl-infra-builder.git $base/gl-infra-builder
-# cp -r custom/  $base/gl-infra-builder/feeds/custom/
+cp -r custom/  $base/gl-infra-builder/feeds/custom/
 cp -r *.yml $base/gl-infra-builder/profiles
 cd $base/gl-infra-builder
 
@@ -154,7 +154,7 @@ target_mt7981_gl-mt2500 | \
             cp -rf ~/glinet/pkg_config/gl_pkg_config_mt7981_mt2500.mk ~/glinet/mt7981/gl_pkg_config.mk
         fi
     else
-        ./scripts/gen_config.py $profile luci glinet_nas custom $xadd
+        ./scripts/gen_config.py $profile glinet_nas custom $xadd
     fi
     #####自定义↓↓↓
 

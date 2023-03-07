@@ -1,4 +1,6 @@
 feeds:
+  - name: custom
+    path: ../feeds_dir/custom
   - name: aliyundrive
     uri: https://github.com/messense/aliyundrive-webdav.git
     branch: main
@@ -69,7 +71,6 @@ diffconfig: |
   CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
   CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=y
   CONFIG_PACKAGE_luci-theme-argon=y
-  CONFIG_PACKAGE_luci-app-argon-config=y
   CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
   CONFIG_LUCI_LANG_zh_Hans=y
   CONFIG_PACKAGE_luci-lib-ip=y
