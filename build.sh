@@ -118,8 +118,8 @@ target_mt7981_gl-mt2500 | \
     else
         xadd=""
         #luci-theme-argon
-        git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-        # git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+        git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+        git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
     fi
 
     if [[ $isdocker == true ]]; 

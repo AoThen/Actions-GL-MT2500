@@ -62,6 +62,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '.github/workflows/*.yml'
+      - "*.yml"
+      - "*.sh"
 #          sudo apt upgrade -y会报错
 
 jobs:
