@@ -1,7 +1,7 @@
 # Actions-GL-MT2500
 📌GL-MT2500自用固件定制
 
-![GL-MT2500](https://github.com/AoThen/Actions-GL-MT2500/actions/workflows/GL.INET.yml/badge.svg)
+[![Build GL.INET](https://github.com/AoThen/Actions-GL-MT2500/actions/workflows/GL.INET.yml/badge.svg?branch=main)](https://github.com/AoThen/Actions-GL-MT2500/actions/workflows/GL.INET.yml)
 
 固件版本OpenWrt 21.02
 
@@ -17,7 +17,7 @@
 - istore **(自选)**
 - luci-app-broadbandacc
 - luci-app-serverchan
-- docker和luci-lib-dockerman
+- docker和luci-lib-dockerman  **(自选)**
 - netspeedtest **(和istore冲突)**
 - 以下插件试验中
 - passwall **(旁路由没成功,待测试正常路由模式)**
