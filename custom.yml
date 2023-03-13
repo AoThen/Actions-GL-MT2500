@@ -26,6 +26,7 @@ packages:
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
   - luci-app-alist
+  - default-settings
 
 diffconfig: |
   CONFIG_PACKAGE_wpad-basic=n

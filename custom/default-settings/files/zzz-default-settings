@@ -1,6 +1,17 @@
 #!/bin/sh
 
-# 没用？
+# 修改Lan接口
+uci set network.lan.proto='static'
+uci set network.lan.netmask='255.255.255.0'
+uci set network.lan.isolate='0'
+uci set network.lan.gateway='192.168.31.1'
+uci set network.lan.delegate='0'
+uci set network.lan.ipaddr='192.168.31.2'
+
+uci commit network
+/etc/init.d/network restart
+
+
 # config system
 # uci set system.@system[0].timezone=CST-8
 # uci set system.@system[0].zonename=Asia/Shanghai
