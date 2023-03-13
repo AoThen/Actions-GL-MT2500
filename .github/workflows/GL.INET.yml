@@ -59,13 +59,13 @@ on:
         required: false
         default: true
         type: boolean
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/*.yml'
-      - "*.yml"
-      - "*.sh"
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - '.github/workflows/*.yml'
+  #     - "*.yml"
+  #     - "*.sh"
 #          sudo apt upgrade -y会报错
 
 jobs:
