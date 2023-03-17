@@ -19,14 +19,15 @@
 - luci-app-serverchan
 - docker和luci-lib-dockerman  **(自选)**
 - netspeedtest **(和istore冲突)**
-- 以下插件试验中
-- passwall **(旁路由没成功,待测试正常路由模式)**
 - ramfree
 - cloudflarespeedtest
+- 以下插件试验中
+- passwall **(旁路由没成功,待测试正常路由模式)**
+- luci-app-vssr
 
 # Todo
 
-- 修改默认IP
+- 无法修改默认IP (192.168.8.1)
 - 
 
 # Thank

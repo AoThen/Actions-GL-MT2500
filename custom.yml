@@ -77,6 +77,9 @@ diffconfig: |
   CONFIG_PACKAGE_luci-app-ramfree=y
   CONFIG_PACKAGE_luci-app-cloudflarespeedtest=y
   CONFIG_PACKAGE_luci-i18n-cloudflarespeedtest-zh-cn=y
+  CONFIG_PACKAGE_lua-maxminddb=y
+  CONFIG_PACKAGE_luci-app-vssr=y
+  CONFIG_PACKAGE_luci-i18n-vssr-zh-cn=y
   CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
   CONFIG_LUCI_LANG_zh_Hans=y
   CONFIG_PACKAGE_luci-lib-ip=y
