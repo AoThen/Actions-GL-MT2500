@@ -19,12 +19,7 @@ feeds:
   - name: alist
     uri: https://github.com/sbwml/luci-app-alist.git
     branch: master
-  - name: maxminddb
-    uri: https://github.com/jerrykuku/lua-maxminddb.git
-    branch: master
-  - name: luci-app-vssr
-    uri: https://github.com/jerrykuku/luci-app-vssr.git
-    branch: master
+
 
 packages:
   - luci-app-ssr-plus
@@ -32,7 +27,6 @@ packages:
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
   - luci-app-alist
-  - luci-app-vssr
   - default-settings
 
 diffconfig: |
