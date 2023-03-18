@@ -155,7 +155,7 @@ target_mt7981_gl-mt2500 | \
         if [[ $profile == *mt3000* ]]; then
             cp -rf ~/glinet/pkg_config/gl_pkg_config_mt7981_mt3000.mk ~/glinet/mt7981/gl_pkg_config.mk
         else
-            cp -rf ~/glinet/pkg_config/gl_pkg_config_mt7981_mt2500.mk ~/glinet/mt7981/gl_pkg_config.mk
+            # cp -rf ~/glinet/pkg_config/gl_pkg_config_mt7981_mt2500.mk ~/glinet/mt7981/gl_pkg_config.mk
 
             cp -rf ~/glinet/pkg_config/gl_pkg_config_mt2500.mk  ~/glinet/mt7981/gl_pkg_config.mk
             cp -rf ~/glinet/pkg_config/glinet_depends_mt2500.yml  $base/gl-infra-builder/profiles/glinet_depends.yml    #./profiles/glinet_depends.yml
