@@ -19,7 +19,12 @@ feeds:
   - name: alist
     uri: https://github.com/sbwml/luci-app-alist.git
     branch: master
-
+  - name: cdnspeedtest
+    uri: https://github.com/immortalwrt-collections/openwrt-cdnspeedtest.git
+    branch: master
+  - name: cloudflarespeedtest
+    uri: https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest.git
+    branch: main
 
 packages:
   - luci-app-ssr-plus
@@ -27,6 +32,8 @@ packages:
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
   - luci-app-alist
+  - cdnspeedtest
+  - luci-app-cloudflarespeedtest
   - default-settings
 
 diffconfig: |
