@@ -53,6 +53,7 @@ uci commit system
 # uci commit dropbear
 
 
+# 作用不大,被覆盖
 echo "bind_host: 0.0.0.0
 bind_port: 3000
 beta_bind_port: 0

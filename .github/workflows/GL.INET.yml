@@ -2,54 +2,54 @@ name: Build GL.INET
 
 on:
   workflow_dispatch:
-    inputs:
-      device:
-        description: "选择设备"
-        required: true
-        default: "target_mt7981_gl-mt2500"
-        type: choice
-        options:
-          - target_mt7981_gl-mt2500
-      record:
-        description: "输入描述"
-        required: false
-        default: "测试版"
-        type: string
-      glversion1:
-        description: "版本"
-        required: false
-        default: "5.4.211"
-        type: string
-      glversion2:
-        description: "固件类型"
-        required: false
-        default: "OpenWrt-21.02"
-        type: string
-      ui:
-        description: "是否包含官方UI (目前支持IPQ6018系列、mt7981系列和GL-A1300)"
-        required: false
-        default: true
-        type: boolean
-      istore:
-        description: "是否包含istore(目前支持MT-2500/MT-3000)"
-        required: false
-        default: false
-        type: boolean
-      isdocker:
-        description: "是否包含docker"
-        required: false
-        default: true
-        type: boolean
-      release:
-        description: "上传到release"
-        required: false
-        default: false
-        type: boolean
-      pushplus:
-        description: "Pushplus通知"
-        required: false
-        default: true
-        type: boolean
+    # inputs:
+    #   device:
+    #     description: "选择设备"
+    #     required: true
+    #     default: "target_mt7981_gl-mt2500"
+    #     type: choice
+    #     options:
+    #       - target_mt7981_gl-mt2500
+    #   record:
+    #     description: "输入描述"
+    #     required: false
+    #     default: "测试版"
+    #     type: string
+    #   glversion1:
+    #     description: "版本"
+    #     required: false
+    #     default: "5.4.211"
+    #     type: string
+    #   glversion2:
+    #     description: "固件类型"
+    #     required: false
+    #     default: "OpenWrt-21.02"
+    #     type: string
+    #   ui:
+    #     description: "是否包含官方UI (目前支持IPQ6018系列、mt7981系列和GL-A1300)"
+    #     required: false
+    #     default: true
+    #     type: boolean
+    #   istore:
+    #     description: "是否包含istore(目前支持MT-2500/MT-3000)"
+    #     required: false
+    #     default: false
+    #     type: boolean
+    #   isdocker:
+    #     description: "是否包含docker"
+    #     required: false
+    #     default: true
+    #     type: boolean
+    #   release:
+    #     description: "上传到release"
+    #     required: false
+    #     default: false
+    #     type: boolean
+    #   pushplus:
+    #     description: "Pushplus通知"
+    #     required: false
+    #     default: true
+    #     type: boolean
   push:
     branches:
       - main

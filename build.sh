@@ -132,9 +132,9 @@ target_mt7981_gl-mt2500 | \
             cp -rf ~/glinet/pkg_config/glinet_depends_mt2500.yml  $base/gl-infra-builder/profiles/glinet_depends.yml    #./profiles/glinet_depends.yml
         fi
 
-        ./scripts/gen_config.py $profile luci glinet_depends #glinet_nas custom $xadd
+        ./scripts/gen_config.py $profile luci glinet_depends custom $xadd #glinet_nas
     else
-        ./scripts/gen_config.py $profile luci #glinet_nas custom $xadd
+        ./scripts/gen_config.py $profile luci custom $xadd #glinet_nas
     fi
     #####自定义↓↓↓
 
