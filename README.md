@@ -12,6 +12,7 @@
 - luci-theme-argon主题 **(和istore不同时存在)**
 - openclash **(旁路由成功)**
 - helloworld **(旁路由最推荐,接口控制不绑定)**
+- passwall **(TCP 节点不选分流总节点,ZG列表以外的,旁路由测试成功!)**
 - aliyundrive-webdav
 - luci-app-alist **（GL-MT2500是21.02，需要改golang版本，目前挂载Webdav有问题）**
 - istore **(自选)**
@@ -22,8 +23,7 @@
 - ramfree
 - cloudflarespeedtest
 - 以下插件试验中
-- passwall **(旁路由没成功,待测试正常路由模式)**
-- luci-app-vssr
+- luci-app-vssr **(测试有问题,另外需要`ln -s /usr/libexec/wget-ssl /usr/bin/wget-ssl`修复一下)**
 
 # Todo
 

@@ -9,16 +9,7 @@ on:
         default: "target_mt7981_gl-mt2500"
         type: choice
         options:
-          - target_wlan_ap-gl-ax1800
-          - target_wlan_ap-gl-axt1800
-          - target_wlan_ap-gl-ax1800-5-4
-          - target_wlan_ap-gl-axt1800-5-4
-          - target_ipq40xx_gl-a1300
           - target_mt7981_gl-mt2500
-          - target_mt7981_gl-mt3000
-          - target_siflower_gl-sf1200
-          - target_siflower_gl-sft1200
-          - target_ramips_gl-mt1300
       record:
         description: "输入描述"
         required: false
@@ -62,10 +53,25 @@ on:
   push:
     branches:
       - main
-  #   paths:
-  #     - '.github/workflows/*.yml'
-  #     - "*.yml"
-  #     - "*.sh"
+    paths:
+      - '.github/workflows/*.yml'
+      - "*.yml"
+      - "*.sh"
+
+#inputs换env
+env:
+  device: "target_mt7981_gl-mt2500"
+  record: "测试版"
+  glversion1: "5.4.211"
+  glversion2: "OpenWrt-21.02"
+  ui: true
+  istore: false
+  isdocker: true
+  release: false
+  pushplus: true
+
+
+
 #          sudo apt upgrade -y会报错
 
 jobs:
@@ -88,20 +94,20 @@ jobs:
       - name: inputs Info
         run: |
           echo "
-          device: ${{ inputs.device }}
-          record: ${{ inputs.record }}
-          glversion1: ${{ inputs.glversion1 }}
-          glversion2: ${{ inputs.glversion2 }}
-          ui: ${{ inputs.ui }}
-          istore: ${{ inputs.istore }}
-          release: ${{ inputs.release }}
-          pushplus: ${{ inputs.pushplus }}
+          device: ${{ env.device }}
+          record: ${{ env.record }}
+          glversion1: ${{ env.glversion1 }}
+          glversion2: ${{ env.glversion2 }}
+          ui: ${{ env.ui }}
+          istore: ${{ env.istore }}
+          release: ${{ env.release }}
+          pushplus: ${{ env.pushplus }}
           "
 
       - name: make
         run: |
           sudo chmod +x ./build.sh
-          ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }} ${{ inputs.glversion1 }} ${{ inputs.glversion2 }} ${{ inputs.istore }} ${{ inputs.isdocker }}
+          ./build.sh ~ ${{ env.device }} ${{ env.ui }} ${{ env.glversion1 }} ${{ env.glversion2 }} ${{ env.istore }} ${{ env.isdocker }}
 
       - name: Organize files
         id: organize
@@ -109,25 +115,25 @@ jobs:
         run: |
           cd ~/firmware
           echo "
-          device: ${{ inputs.device }}
-          record: ${{ inputs.record }}
-          glversion1: ${{ inputs.glversion1 }}
-          glversion2: ${{ inputs.glversion2 }}
-          ui: ${{ inputs.ui }}
-          istore: ${{ inputs.istore }}
-          release: ${{ inputs.release }}
-          pushplus: ${{ inputs.pushplus }} " > info.txt
+          device: ${{ env.device }}
+          record: ${{ env.record }}
+          glversion1: ${{ env.glversion1 }}
+          glversion2: ${{ env.glversion2 }}
+          ui: ${{ env.ui }}
+          istore: ${{ env.istore }}
+          release: ${{ env.release }}
+          pushplus: ${{ env.pushplus }} " > info.txt
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           cd ~/packages
           echo "
-          device: ${{ inputs.device }}
-          record: ${{ inputs.record }}
-          glversion1: ${{ inputs.glversion1 }}
-          glversion2: ${{ inputs.glversion2 }}
-          ui: ${{ inputs.ui }}
-          istore: ${{ inputs.istore }}
-          release: ${{ inputs.release }}
-          pushplus: ${{ inputs.pushplus }} " > info.txt
+          device: ${{ env.device }}
+          record: ${{ env.record }}
+          glversion1: ${{ env.glversion1 }}
+          glversion2: ${{ env.glversion2 }}
+          ui: ${{ env.ui }}
+          istore: ${{ env.istore }}
+          release: ${{ env.release }}
+          pushplus: ${{ env.pushplus }} " > info.txt
           echo "PACKAGES=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
 
@@ -153,20 +159,20 @@ jobs:
         id: tag
         if: true && !failure() && !cancelled()
         run: |
-          echo "release_tag=${{inputs.device}}.ui_${{ inputs.ui }}.istore_${{ inputs.istore }}.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+          echo "release_tag=${{inputs.device}}.ui_${{ env.ui }}.istore_${{ env.istore }}.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
-        if: ${{ inputs.release }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        if: ${{ env.release }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_FIRMWARE }}
         with:
-          body: ${{ inputs.record }}
+          body: ${{ env.record }}
           tag_name: ${{ steps.tag.outputs.release_tag }}
           files: ${{ env.FIRMWARE }}/*
 
       - name: Pushplus Info
-        if: ${{ inputs.pushplus }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        if: ${{ env.pushplus }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         run: |
-          curl "http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=Actions_Success&content=${{ inputs.device }}&template=txt"
+          curl "http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=Actions_Success&content=${{ env.device }}&template=txt"

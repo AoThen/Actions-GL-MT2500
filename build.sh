@@ -79,35 +79,6 @@ function copy_file() {
 }
 
 case $profile in
-target_wlan_ap-gl-ax1800 | \
-    target_wlan_ap-gl-axt1800 | \
-    target_wlan_ap-gl-ax1800-5-4 | \
-    target_wlan_ap-gl-axt1800-5-4)
-    if [[ $profile == *5-4* ]]; then
-        python3 setup.py -c configs/config-wlan-ap-5.4.yml
-    else
-        python3 setup.py -c configs/config-wlan-ap.yml
-    fi
-    ln -s $base/gl-infra-builder/wlan-ap/openwrt ~/openwrt && cd ~/openwrt
-    if [[ $ui == true ]]; then
-        ./scripts/gen_config.py $profile glinet_depends glinet_nas custom
-        git clone https://github.com/gl-inet/glinet4.x.git ~/glinet
-    else
-        ./scripts/gen_config.py $profile openwrt_common glinet_nas luci custom
-    fi
-    build_firmware $ui ipq60xx && copy_file ~/openwrt/bin/targets/*/*
-    ;;
-target_ipq40xx_gl-a1300)
-    python3 setup.py -c configs/config-21.02.2.yml
-    ln -s $base/gl-infra-builder/openwrt-21.02/openwrt-21.02.2 ~/openwrt && cd ~/openwrt
-    if [[ $ui == true ]]; then
-        ./scripts/gen_config.py $profile glinet_depends glinet_nas custom
-        git clone https://github.com/gl-inet/glinet4.x.git ~/glinet
-    else
-        ./scripts/gen_config.py $profile openwrt_common glinet_nas luci custom
-    fi
-    build_firmware $ui ipq40xx && copy_file ~/openwrt/bin/targets/*/*
-    ;;
 target_mt7981_gl-mt2500 | \
     target_mt7981_gl-mt3000)
     python3 setup.py -c configs/config-mt798x-7.6.6.1.yml
@@ -161,9 +132,9 @@ target_mt7981_gl-mt2500 | \
             cp -rf ~/glinet/pkg_config/glinet_depends_mt2500.yml  $base/gl-infra-builder/profiles/glinet_depends.yml    #./profiles/glinet_depends.yml
         fi
 
-        ./scripts/gen_config.py $profile luci glinet_depends glinet_nas custom $xadd
+        ./scripts/gen_config.py $profile luci glinet_depends #glinet_nas custom $xadd
     else
-        ./scripts/gen_config.py $profile luci glinet_nas custom $xadd
+        ./scripts/gen_config.py $profile luci #glinet_nas custom $xadd
     fi
     #####自定义↓↓↓
 
@@ -177,13 +148,6 @@ target_mt7981_gl-mt2500 | \
     echo $glversion2 >files/etc/version.type
     #####自定义↑↑↑
     build_firmware $ui mt7981 && copy_file ~/openwrt/bin/targets/*/*
-    ;;
-target_siflower_gl-sf1200 | \
-    target_siflower_gl-sft1200)
-    python3 setup.py -c configs/config-siflower-18.x.yml
-    ln -s $base/gl-infra-builder/openwrt-18.06/siflower/openwrt-18.06 ~/openwrt && cd ~/openwrt
-    ./scripts/gen_config.py $profile glinet_nas custom
-    build_firmware && copy_file ~/openwrt/bin/targets/*
     ;;
 target_ramips_gl-mt1300)
     python3 setup.py -c configs/config-22.03.0.yml
