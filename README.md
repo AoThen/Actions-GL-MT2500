@@ -12,7 +12,7 @@
 - luci-theme-argon主题 **(和istore不同时存在)**
 - openclash **(旁路由成功)**
 - helloworld **(旁路由最推荐,接口控制不绑定)**
-- passwall **(使用前更新全部规则!旁路由测试成功!)**
+- passwall **(内存异常,使用前更新全部规则!旁路由测试成功!)**
 - aliyundrive-webdav
 - luci-app-alist **（GL-MT2500是21.02，需要改golang版本，目前挂载dav有问题）**
 - istore **(自选)**
