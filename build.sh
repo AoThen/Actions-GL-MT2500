@@ -121,7 +121,7 @@ target_mt7981_gl-mt2500 | \
 
 
     if [[ $ui == true ]]; then
-        ./scripts/gen_config.py $profile luci custom glinet_nas $xadd
+        # ./scripts/gen_config.py $profile luci custom glinet_nas $xadd
         git clone https://github.com/gl-inet/glinet4.x.git ~/glinet
 
         if [[ $profile == *mt3000* ]]; then
@@ -133,7 +133,7 @@ target_mt7981_gl-mt2500 | \
             cp -rf ~/glinet/pkg_config/glinet_depends_mt2500.yml  $base/gl-infra-builder/profiles/glinet_depends.yml    #./profiles/glinet_depends.yml
         fi
 
-        ./scripts/gen_config.py glinet_depends
+        ./scripts/gen_config.py glinet_depends custom $xadd
     else
         ./scripts/gen_config.py $profile luci custom glinet_nas $xadd
     fi
