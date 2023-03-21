@@ -91,18 +91,18 @@ jobs:
           git config --global user.email "AoThen@Github.com"
           git config --global user.name "AoThen"
 
-      - name: inputs Info
-        run: |
-          echo "
-          device: ${{ env.device }}
-          record: ${{ env.record }}
-          glversion1: ${{ env.glversion1 }}
-          glversion2: ${{ env.glversion2 }}
-          ui: ${{ env.ui }}
-          istore: ${{ env.istore }}
-          isrelease: ${{ env.isrelease }}
-          pushplus: ${{ env.pushplus }}
-          "
+      # - name: inputs Info
+      #   run: |
+      #     echo "
+      #     device: ${{ env.device }}
+      #     record: ${{ env.record }}
+      #     glversion1: ${{ env.glversion1 }}
+      #     glversion2: ${{ env.glversion2 }}
+      #     ui: ${{ env.ui }}
+      #     istore: ${{ env.istore }}
+      #     isrelease: ${{ env.isrelease }}
+      #     pushplus: ${{ env.pushplus }}
+      #     "
 
       - name: make
         run: |

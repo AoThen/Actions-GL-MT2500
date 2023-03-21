@@ -10,6 +10,7 @@ packages:
   - luci-app-openclash
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
+  - luci-app-vssr
   - luci-app-alist
   - luci-app-argon-config
   - luci-theme-argon

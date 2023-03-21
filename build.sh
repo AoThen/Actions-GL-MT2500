@@ -46,8 +46,6 @@ cp -r custom/ $base/gl-infra-builder/feeds/custom/
 cp -r *.yml $base/gl-infra-builder/profiles
 cd $base/gl-infra-builder
 
-# Modify default IP 没用?
-# sed -i 's/192.168.8.1/192.168.31.2/g' patches-siflower-18.x/0103-fix-modify-the-Siflower-SDK-according-to-the-feature.patch
 
 function build_firmware() {
     cd ~/openwrt
@@ -116,7 +114,7 @@ target_mt7981_gl-mt2500 | \
 
     if [[ $istore != true ]]; 
     then
-        svn export https://github.com/sirpdboy/netspeedtest/trunk package/netspeedtest
+        # svn export https://github.com/sirpdboy/netspeedtest/trunk package/netspeedtest
     fi
 
 
@@ -135,7 +133,7 @@ target_mt7981_gl-mt2500 | \
 
         ./scripts/gen_config.py glinet_depends custom $xadd #glinet_nas
     else
-        ./scripts/gen_config.py $profile luci custom $xadd #glinet_nas
+        ./scripts/gen_config.py $profile luci custom $xadd
     fi
     #####自定义↓↓↓
 
