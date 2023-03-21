@@ -40,7 +40,7 @@ on:
     #     required: false
     #     default: true
     #     type: boolean
-    #   release:
+    #   isrelease:
     #     description: "上传到release"
     #     required: false
     #     default: false
@@ -67,7 +67,7 @@ env:
   ui: true
   istore: false
   isdocker: true
-  release: false
+  isrelease: false
   pushplus: true
 
 
@@ -100,7 +100,7 @@ jobs:
           glversion2: ${{ env.glversion2 }}
           ui: ${{ env.ui }}
           istore: ${{ env.istore }}
-          release: ${{ env.release }}
+          isrelease: ${{ env.isrelease }}
           pushplus: ${{ env.pushplus }}
           "
 
@@ -121,9 +121,10 @@ jobs:
           glversion2: ${{ env.glversion2 }}
           ui: ${{ env.ui }}
           istore: ${{ env.istore }}
-          release: ${{ env.release }}
+          isrelease: ${{ env.isrelease }}
           pushplus: ${{ env.pushplus }} " > info.txt
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+          rm -rf "openwrt-imagebuilder-mediatek-mt7981.Linux-x86_64.tar.xz"
           cd ~/packages
           echo "
           device: ${{ env.device }}
@@ -132,7 +133,7 @@ jobs:
           glversion2: ${{ env.glversion2 }}
           ui: ${{ env.ui }}
           istore: ${{ env.istore }}
-          release: ${{ env.release }}
+          isrelease: ${{ env.isrelease }}
           pushplus: ${{ env.pushplus }} " > info.txt
           echo "PACKAGES=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
@@ -164,7 +165,7 @@ jobs:
 
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
-        if: ${{ env.release }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        if: ${{ env.isrelease }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_FIRMWARE }}
         with:
