@@ -46,8 +46,8 @@ jobs:
       - name: Clone
         run: |
           echo "Usebase=$PWD" >> $GITHUB_ENV
-          git clone https://github.com/gl-inet/gl-infra-builder.git
-          git clone https://github.com/gl-inet/glinet4.x.git
+          git clone --depth 1 https://github.com/gl-inet/gl-infra-builder.git
+          git clone --depth 1 https://github.com/gl-inet/glinet4.x.git
           cp ./glinet4.x/pkg_config/gl_pkg_config_mt2500.mk  ./glinet4.x/mt7981/gl_pkg_config.mk
           cp ./glinet4.x/pkg_config/glinet_depends_mt2500.yml  ./gl-infra-builder/profiles/glinet_depends.yml
           cp -r custom/ ./gl-infra-builder/feeds/custom/
@@ -66,7 +66,7 @@ jobs:
           rm -rf feeds/packages/lang/golang
           svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
           ./scripts/feeds update -a && ./scripts/feeds install -a && make defconfig
-          make -j$(expr $(nproc) + 1) GL_PKGDIR=~/glinet4.x/mt7981/ V=s
+          make -j$(expr $(nproc) + 1) GL_PKGDIR=${{ env.Usebase }}/glinet4.x/mt7981/ V=s
 
       - name: Copy
         run: |
