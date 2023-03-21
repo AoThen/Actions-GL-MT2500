@@ -114,7 +114,7 @@ target_mt7981_gl-mt2500 | \
 
     if [[ $istore != true ]]; 
     then
-        # svn export https://github.com/sirpdboy/netspeedtest/trunk package/netspeedtest
+        svn export https://github.com/sirpdboy/netspeedtest/trunk package/netspeedtest
     fi
 
 
