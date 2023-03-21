@@ -50,11 +50,11 @@ on:
     #     required: false
     #     default: true
     #     type: boolean
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/GL.INET.yml'
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - '.github/workflows/GL.INET.yml'
       # - "*.yml"
       # - "*.sh"
 
