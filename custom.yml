@@ -1,30 +1,9 @@
 feeds:
   - name: custom
     path: ../feeds_dir/custom
-  - name: aliyundrive
-    uri: https://github.com/messense/aliyundrive-webdav.git
-    branch: main
-  - name: passwall_packages
-    uri: https://github.com/xiaorouji/openwrt-passwall.git
-    branch: packages
-  - name: passwall_luci
-    uri: https://github.com/xiaorouji/openwrt-passwall.git
-    branch: luci
-  - name: helloworld
-    uri: https://github.com/fw876/helloworld.git
-    branch: master
-  - name: OpenClash
-    uri: https://github.com/vernesong/OpenClash.git
-    branch: master
-  - name: alist
-    uri: https://github.com/sbwml/luci-app-alist.git
-    branch: master
-  - name: cdnspeedtest
-    uri: https://github.com/immortalwrt-collections/openwrt-cdnspeedtest.git
-    branch: master
-  - name: cloudflarespeedtest
-    uri: https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest.git
-    branch: main
+  - name: AoThen_Packages
+    uri: https://github.com/AoThen/Openwrt-Packages.git
+    branch: feeds
 
 packages:
   - luci-app-ssr-plus
@@ -32,13 +11,9 @@ packages:
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
   - luci-app-alist
-  - cdnspeedtest
-  - luci-app-cloudflarespeedtest
   - default-settings
 
 diffconfig: |
-  CONFIG_PACKAGE_wpad-basic=n
-  CONFIG_PACKAGE_wpad=n
   CONFIG_PACKAGE_dnsmasq=n
   CONFIG_PACKAGE_dnsmasq-full=y
   CONFIG_PACKAGE_luci-compat=y
@@ -53,40 +28,8 @@ diffconfig: |
   CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
   CONFIG_PACKAGE_luci-app-netspeedtest=y
   CONFIG_PACKAGE_luci-i18n-netspeedtest-zh-cn=y
-  CONFIG_PACKAGE_libuv=y
-  CONFIG_PACKAGE_libwebsockets-full=y
-  CONFIG_PACKAGE_luci-app-passwall=y
-  CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Haproxy=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Client=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Server=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Simple_Obfs=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Plugin=y
-  CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
-  CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
-  CONFIG_PACKAGE_luci-app-ssr-plus=y
-  CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Client=y
-  CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Server=y
-  CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y
-  CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ChinaDNS_NG=y
-  CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_IPT2Socks=y
-  CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Simple_Obfs=y
-  CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Client=y
-  CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
-  CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=y
   CONFIG_PACKAGE_luci-theme-argon=y
   CONFIG_PACKAGE_luci-app-argon-config=y
-  CONFIG_PACKAGE_cdnspeedtest=y
   CONFIG_PACKAGE_luci-app-ramfree=y
-  CONFIG_PACKAGE_luci-app-cloudflarespeedtest=y
-  CONFIG_PACKAGE_luci-i18n-cloudflarespeedtest-zh-cn=y
   CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
   CONFIG_LUCI_LANG_zh_Hans=y
-  CONFIG_PACKAGE_luci-lib-ip=y
-  CONFIG_BUSYBOX_CUSTOM=y
-  CONFIG_BUSYBOX_CONFIG_FEATURE_FLOAT_SLEEP=y
