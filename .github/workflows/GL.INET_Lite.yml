@@ -7,8 +7,8 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/*.yml'
-      - "*.yml"
+      - '.github/workflows/GL.INET_Lite.yml'
+      - ".yml"
       - "*.sh"
 
 #inputs换env
@@ -53,11 +53,11 @@ jobs:
           cp -r custom/ ./gl-infra-builder/feeds/custom/
           cp *.yml ./gl-infra-builder/profiles
           cd gl-infra-builder
-          echo ${{ env.glversion1 }} >files/etc/glversion
-          echo ${{ env.glversion2 }} >files/etc/version.type
           python3 setup.py -c configs/config-mt798x-7.6.6.1.yml
           cd mt7981
           ./scripts/gen_config.py glinet_depends custom
+          echo ${{ env.glversion1 }} >files/etc/glversion
+          echo ${{ env.glversion2 }} >files/etc/version.type
 
 
       - name: Make
