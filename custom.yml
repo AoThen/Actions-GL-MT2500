@@ -1,7 +1,7 @@
 feeds:
   - name: custom
     path: ../feeds_dir/custom
-  - name: AoThen_Packages
+  - name: AoThenPackages
     uri: https://github.com/AoThen/Openwrt-Packages.git
     branch: feeds
 
@@ -11,25 +11,6 @@ packages:
   - luci-app-aliyundrive-webdav
   - luci-app-passwall
   - luci-app-alist
+  - luci-app-argon-config
+  - luci-theme-argon
   - default-settings
-
-diffconfig: |
-  CONFIG_PACKAGE_dnsmasq=n
-  CONFIG_PACKAGE_dnsmasq-full=y
-  CONFIG_PACKAGE_luci-compat=y
-  CONFIG_PACKAGE_luci-app-openclash=y
-  CONFIG_PACKAGE_aliyundrive-webdav=y
-  CONFIG_PACKAGE_luci-app-aliyundrive-webdav=y
-  CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn=y
-  CONFIG_PACKAGE_luci-app-serverchan=y
-  CONFIG_PACKAGE_luci-app-broadbandacc=y
-  CONFIG_PACKAGE_alist=y
-  CONFIG_PACKAGE_luci-app-alist=y
-  CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
-  CONFIG_PACKAGE_luci-app-netspeedtest=y
-  CONFIG_PACKAGE_luci-i18n-netspeedtest-zh-cn=y
-  CONFIG_PACKAGE_luci-theme-argon=y
-  CONFIG_PACKAGE_luci-app-argon-config=y
-  CONFIG_PACKAGE_luci-app-ramfree=y
-  CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
-  CONFIG_LUCI_LANG_zh_Hans=y

@@ -89,8 +89,8 @@ target_mt7981_gl-mt2500 | \
     else
         xadd=""
         #luci-theme-argon
-        git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-        git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+        # git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+        # git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
     fi
 
     if [[ $isdocker == true ]]; 
@@ -102,12 +102,12 @@ target_mt7981_gl-mt2500 | \
     # git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 
     #自定义
-    svn export https://github.com/tty228/luci-app-serverchan/trunk package/luci-app-serverchan
-    svn export https://github.com/AoThen/luci-app-broadbandacc/trunk package/luci-app-broadbandacc
+    # svn export https://github.com/tty228/luci-app-serverchan/trunk package/luci-app-serverchan
+    # svn export https://github.com/AoThen/luci-app-broadbandacc/trunk package/luci-app-broadbandacc
 
     # svn export https://github.com/immortalwrt-collections/openwrt-cdnspeedtest/trunk/cdnspeedtest package/cdnspeedtest
     # svn export https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest/trunk/applications/luci-app-cloudflarespeedtest package/luci-app-cloudflarespeedtest
-    svn export https://github.com/AoThen/luci-app-ramfree/trunk package/luci-app-ramfree
+    # svn export https://github.com/AoThen/luci-app-ramfree/trunk package/luci-app-ramfree
     #git lua-maxminddb 依赖
     # git clone --depth 1 https://github.com/jerrykuku/lua-maxminddb.git  package/lua-maxminddb
     # git clone --depth 1 https://github.com/jerrykuku/luci-app-vssr.git  package/luci-app-vssr
