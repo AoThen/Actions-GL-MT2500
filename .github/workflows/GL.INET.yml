@@ -55,8 +55,8 @@ on:
       - main
     paths:
       - '.github/workflows/GL.INET.yml'
-      - "*.yml"
-      - "*.sh"
+      # - "*.yml"
+      # - "*.sh"
 
 #inputs换env
 env:
