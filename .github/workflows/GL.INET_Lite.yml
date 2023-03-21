@@ -1,0 +1,157 @@
+name: Build GL.INET MT2500
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/*.yml'
+      - "*.yml"
+      - "*.sh"
+
+#inputs换env
+env:
+  device: "target_mt7981_gl-mt2500"
+  record: "4.2.0简化版"
+  glversion1: "5.4.211"
+  glversion2: "OpenWrt-21.02"
+  ui: true
+  istore: false
+  isdocker: true
+  isrelease: false
+  pushplus: true
+
+
+# sudo apt upgrade -y会报错
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: update
+        run: |
+          sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          sudo apt update -y
+          sudo apt install libfuse-dev -y
+          sudo apt install build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml -y
+          sudo -E apt-get -qq autoremove --purge
+          sudo -E apt-get -qq clean
+          sudo timedatectl set-timezone "Asia/Shanghai"
+          git config --global user.email "AoThen@Github.com"
+          git config --global user.name "AoThen"
+
+      - name: Clone
+        run: |
+          echo "Usebase=$PWD" >> $GITHUB_ENV
+          git clone https://github.com/gl-inet/gl-infra-builder.git
+          git clone https://github.com/gl-inet/glinet4.x.git
+          cp ./glinet4.x/pkg_config/gl_pkg_config_mt2500.mk  ./glinet4.x/mt7981/gl_pkg_config.mk
+          cp ./glinet4.x/pkg_config/glinet_depends_mt2500.yml  ./gl-infra-builder/profiles/glinet_depends.yml
+          cp -r custom/ ./gl-infra-builder/feeds/custom/
+          cp *.yml ./gl-infra-builder/profiles
+          cd gl-infra-builder
+
+          echo ${{ env.glversion1 }} >files/etc/glversion
+          echo ${{ env.glversion2 }} >files/etc/version.type
+
+          python3 setup.py -c configs/config-mt798x-7.6.6.1.yml
+          cd mt7981
+          ./scripts/gen_config.py glinet_depends custom
+
+
+      - name: Make
+        run: |
+        cd ${{ env.FIRMWARE }}/gl-infra-builder/mt7981
+
+        rm -rf feeds/packages/lang/golang
+        svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
+        ./scripts/feeds update -a && ./scripts/feeds install -a && make defconfig
+
+        make -j$(expr $(nproc) + 1) GL_PKGDIR=~/glinet4.x/mt7981/ V=s
+
+
+      - name: Copy
+        run: |
+        mkdir ~/firmware
+        mkdir ~/packages
+        cd ${{ env.FIRMWARE }}/gl-infra-builder/mt7981/bin/targets/*/*
+        rm -rf packages
+        cp -rf ./* ~/firmware
+        cp -rf ${{ env.FIRMWARE }}/gl-infra-builder/mt7981/bin/packages/* ~/packages
+
+      # - name: Make
+      #   run: |
+      #     sudo chmod +x ./build.sh
+      #     ./build.sh ~ ${{ env.device }} ${{ env.ui }} ${{ env.glversion1 }} ${{ env.glversion2 }} ${{ env.istore }} ${{ env.isdocker }}
+
+      - name: Organize files
+        id: organize
+        if: true && !failure() && !cancelled()
+        run: |
+          cd ~/firmware
+          echo "
+          device: ${{ env.device }}
+          record: ${{ env.record }}
+          glversion1: ${{ env.glversion1 }}
+          glversion2: ${{ env.glversion2 }}
+          ui: ${{ env.ui }}
+          istore: ${{ env.istore }}
+          isrelease: ${{ env.isrelease }}
+          pushplus: ${{ env.pushplus }} " > info.txt
+          echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+          rm -rf "openwrt-imagebuilder-mediatek-mt7981.Linux-x86_64.tar.xz"
+          cd ~/packages
+          echo "
+          device: ${{ env.device }}
+          record: ${{ env.record }}
+          glversion1: ${{ env.glversion1 }}
+          glversion2: ${{ env.glversion2 }}
+          ui: ${{ env.ui }}
+          istore: ${{ env.istore }}
+          isrelease: ${{ env.isrelease }}
+          pushplus: ${{ env.pushplus }} " > info.txt
+          echo "PACKAGES=$PWD" >> $GITHUB_ENV
+          echo "status=success" >> $GITHUB_OUTPUT
+
+      - name: Check space usage
+        if: (!cancelled())
+        run: df -hT
+
+      - name: Upload firmware directory
+        uses: actions/upload-artifact@main
+        if: steps.organize.outputs.status == 'success' && !cancelled() && !failure()
+        with:
+          name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+          path: ${{ env.FIRMWARE }}
+
+      - name: Upload packages directory
+        uses: actions/upload-artifact@main
+        if: steps.organize.outputs.status == 'success' && !cancelled() && !failure()
+        with:
+          name: OpenWrt_packages${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+          path: ${{ env.PACKAGES }}
+
+      - name: Generate release tag
+        id: tag
+        if: true && !failure() && !cancelled()
+        run: |
+          echo "release_tag=${{inputs.device}}.ui_${{ env.ui }}.istore_${{ env.istore }}.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+          echo "status=success" >> $GITHUB_OUTPUT
+
+      - name: Upload firmware to release
+        uses: softprops/action-gh-release@v1
+        if: ${{ env.isrelease }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_FIRMWARE }}
+        with:
+          body: ${{ env.record }}
+          tag_name: ${{ steps.tag.outputs.release_tag }}
+          files: ${{ env.FIRMWARE }}/*
+
+      - name: Pushplus Info
+        if: ${{ env.pushplus }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        run: |
+          curl "http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=Actions_Success&content=${{ env.device }}&template=txt"
