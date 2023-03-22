@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - name: update
+      - name: Update
         run: |
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo apt update -y
@@ -133,7 +133,7 @@ jobs:
         id: tag
         if: true && !failure() && !cancelled()
         run: |
-          echo "release_tag=${{inputs.device}}.ui_${{ env.ui }}.istore_${{ env.istore }}.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+          echo "release_tag=${{env.device}}.ui_${{ env.ui }}.istore_${{ env.istore }}.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Upload firmware to release

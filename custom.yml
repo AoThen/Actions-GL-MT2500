@@ -10,6 +10,8 @@ packages:
   - luci-app-vssr
   - luci-app-aliyundrive-webdav
   - luci-app-alist
+  - luci-app-ramfree
+  - luci-app-netspeedtest
   - luci-theme-argon
   - luci-app-argon-config
   - default-settings
