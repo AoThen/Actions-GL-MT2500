@@ -8,7 +8,7 @@ feeds:
 packages:
   - luci-app-openclash
   - luci-app-ssr-plus
-  - luci-app-vssr
+  - luci-app-passwall
   - luci-app-aliyundrive-webdav
   - luci-app-alist
   - luci-app-ramfree
