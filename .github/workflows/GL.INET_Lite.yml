@@ -14,10 +14,9 @@ on:
 #inputs换env
 env:
   device: "target_mt7981_gl-mt2500"
-  record: "4.2.0简化版"
+  record: "4.2.0版"
   glversion1: "5.4.211"
   glversion2: "OpenWrt-21.02"
-  ui: true
   istore: false
   isdocker: true
   isrelease: false
@@ -92,7 +91,6 @@ jobs:
           record: ${{ env.record }}
           glversion1: ${{ env.glversion1 }}
           glversion2: ${{ env.glversion2 }}
-          ui: ${{ env.ui }}
           istore: ${{ env.istore }}
           isrelease: ${{ env.isrelease }}
           pushplus: ${{ env.pushplus }} " > info.txt
@@ -104,12 +102,12 @@ jobs:
           record: ${{ env.record }}
           glversion1: ${{ env.glversion1 }}
           glversion2: ${{ env.glversion2 }}
-          ui: ${{ env.ui }}
           istore: ${{ env.istore }}
           isrelease: ${{ env.isrelease }}
           pushplus: ${{ env.pushplus }} " > info.txt
           echo "PACKAGES=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
+          echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
       - name: Check space usage
         if: (!cancelled())
@@ -133,12 +131,12 @@ jobs:
         id: tag
         if: true && !failure() && !cancelled()
         run: |
-          echo "release_tag=${{env.device}}.ui_${{ env.ui }}.istore_${{ env.istore }}.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+          echo "release_tag=${{env.device}}.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
-        if: ${{ env.isrelease }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        if: env.isrelease == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_FIRMWARE }}
         with:
@@ -147,6 +145,6 @@ jobs:
           files: ${{ env.FIRMWARE }}/*
 
       - name: Pushplus Info
-        if: ${{ env.pushplus }} == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+        if: env.pushplus == 'true' && steps.tag.outputs.status == 'success' && !cancelled() && !failure()
         run: |
           curl "http://www.pushplus.plus/send?token=${{ secrets.PUSHPLUS_TOKEN }}&title=Actions_Success&content=${{ env.device }}&template=txt"
