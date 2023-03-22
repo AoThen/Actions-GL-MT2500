@@ -42,6 +42,13 @@ jobs:
           git config --global user.email "AoThen@Github.com"
           git config --global user.name "AoThen"
 
+      - name: Generate release text
+        if: true && !failure() && !cancelled()
+        run: |
+          tail -n $($(wc -l custom.yml)-8) custom.yml
+          echo "release_text=$(tail -n $($(wc -l custom.yml)-8) custom.yml)" >> $GITHUB_OUTPUT
+          echo "status=success" >> $GITHUB_OUTPUT
+
       - name: Clone
         run: |
           echo "Usebase=$PWD" >> $GITHUB_ENV
@@ -73,8 +80,11 @@ jobs:
           mkdir ~/packages
           cd ${{ env.Usebase }}/gl-infra-builder/mt7981/bin/targets/*/*
           rm -rf packages
-          cp -rf ./* ~/firmware
-          cp -rf ${{ env.Usebase }}/gl-infra-builder/mt7981/bin/packages/* ~/packages
+          mv -f ./* ~/firmware
+          mv -f ${{ env.Usebase }}/gl-infra-builder/mt7981/bin/packages/* ~/packages
+
+      # cp -rf ./* ~/firmware
+      # cp -rf ${{ env.Usebase }}/gl-infra-builder/mt7981/bin/packages/* ~/packages
 
       # - name: Make
       #   run: |
@@ -113,19 +123,23 @@ jobs:
         if: (!cancelled())
         run: df -hT
 
-      - name: Upload firmware directory
-        uses: actions/upload-artifact@main
-        if: steps.organize.outputs.status == 'success' && !cancelled() && !failure()
-        with:
-          name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-          path: ${{ env.FIRMWARE }}
-
       - name: Upload packages directory
         uses: actions/upload-artifact@main
         if: steps.organize.outputs.status == 'success' && !cancelled() && !failure()
         with:
           name: OpenWrt_packages${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: ${{ env.PACKAGES }}
+
+      - name: Del packages directory
+        if: steps.organize.outputs.status == 'success' && !cancelled() && !failure()
+        run: rm -rf ~/packages
+
+      - name: Upload firmware directory
+        uses: actions/upload-artifact@main
+        if: steps.organize.outputs.status == 'success' && !cancelled() && !failure()
+        with:
+          name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+          path: ${{ env.FIRMWARE }}
 
       - name: Generate release tag
         id: tag
