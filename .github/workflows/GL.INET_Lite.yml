@@ -19,7 +19,7 @@ env:
   glversion2: "OpenWrt-21.02"
   istore: false
   isdocker: true
-  isrelease: false
+  isrelease: true
   pushplus: true
 
 
