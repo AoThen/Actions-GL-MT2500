@@ -72,10 +72,10 @@ jobs:
         run: |
           mkdir ~/firmware
           mkdir ~/packages
-          cd ${{ env.FIRMWARE }}/gl-infra-builder/mt7981/bin/targets/*/*
+          cd ${{ env.Usebase }}/gl-infra-builder/mt7981/bin/targets/*/*
           rm -rf packages
           cp -rf ./* ~/firmware
-          cp -rf ${{ env.FIRMWARE }}/gl-infra-builder/mt7981/bin/packages/* ~/packages
+          cp -rf ${{ env.Usebase }}/gl-infra-builder/mt7981/bin/packages/* ~/packages
 
       # - name: Make
       #   run: |
