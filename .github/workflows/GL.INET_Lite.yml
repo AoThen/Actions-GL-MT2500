@@ -42,12 +42,12 @@ jobs:
           git config --global user.email "AoThen@Github.com"
           git config --global user.name "AoThen"
 
-      - name: Generate release text
-        if: true && !failure() && !cancelled()
-        run: |
-          tail -n $($(wc -l custom.yml)-8) custom.yml
-          echo "release_text=$(tail -n $($(wc -l custom.yml)-8) custom.yml)" >> $GITHUB_OUTPUT
-          echo "status=success" >> $GITHUB_OUTPUT
+      # - name: Generate release text
+      #   if: true && !failure() && !cancelled()
+      #   run: |
+      #     tail -n $($(wc -l custom.yml)-8) custom.yml
+      #     echo "release_text=$(tail -n $($(wc -l custom.yml)-8) custom.yml)" >> $GITHUB_OUTPUT
+      #     echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Clone
         run: |
