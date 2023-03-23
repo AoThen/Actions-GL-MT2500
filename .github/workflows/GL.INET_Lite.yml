@@ -48,6 +48,10 @@ jobs:
       #     echo "release_text=$(tail -n $($(wc -l custom.yml)-8) custom.yml)" >> $GITHUB_OUTPUT
       #     echo "status=success" >> $GITHUB_OUTPUT
 
+
+      # cp -r custom/ ./gl-infra-builder/feeds/custom/
+      # echo ${{ env.glversion2 }} >files/etc/version.type
+
       - name: Clone
         run: |
           echo "Usebase=$PWD" >> $GITHUB_ENV
@@ -55,14 +59,12 @@ jobs:
           git clone --depth 1 https://github.com/gl-inet/glinet4.x.git
           cp ./glinet4.x/pkg_config/gl_pkg_config_mt2500.mk  ./glinet4.x/mt7981/gl_pkg_config.mk
           cp ./glinet4.x/pkg_config/glinet_depends_mt2500.yml  ./gl-infra-builder/profiles/glinet_depends.yml
-        # cp -r custom/ ./gl-infra-builder/feeds/custom/
           cp *.yml ./gl-infra-builder/profiles
           cd gl-infra-builder
           python3 setup.py -c configs/config-mt798x-7.6.6.1.yml
           cd mt7981
           ./scripts/gen_config.py glinet_depends custom
           echo ${{ env.glversion }} >files/etc/glversion
-        # echo ${{ env.glversion2 }} >files/etc/version.type
 
 
       - name: Make
