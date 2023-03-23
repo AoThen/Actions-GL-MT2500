@@ -1,6 +1,6 @@
 feeds:
-  - name: custom
-    path: ../feeds_dir/custom
+  # - name: custom
+  #   path: ../feeds_dir/custom
   - name: AoThen_Packages
     uri: https://github.com/AoThen/Openwrt-Packages.git
     branch: feeds
@@ -9,7 +9,6 @@ packages:
   - luci-app-openclash
   - luci-app-ssr-plus
   - luci-app-passwall
-  - luci-app-vssr
   - luci-app-aliyundrive-webdav
   - luci-app-alist
   - luci-app-ramfree
