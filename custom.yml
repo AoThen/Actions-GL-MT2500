@@ -11,8 +11,9 @@ packages:
   - luci-app-passwall
   - luci-app-aliyundrive-webdav
   - luci-app-alist
+  - luci-app-vssr
   - luci-app-ramfree
   - luci-app-netspeedtest
   - luci-theme-argon
   - luci-app-argon-config
-  - default-settings
+  # - default-settings

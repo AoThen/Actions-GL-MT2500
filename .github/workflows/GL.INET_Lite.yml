@@ -15,11 +15,10 @@ on:
 env:
   device: "target_mt7981_gl-mt2500"
   record: "4.2.0版"
-  glversion1: "5.4.211"
-  glversion2: "OpenWrt-21.02"
+  glversion: "5.4.211A"
   istore: false
   isdocker: true
-  isrelease: true
+  isrelease: false
   pushplus: true
 
 
@@ -56,14 +55,14 @@ jobs:
           git clone --depth 1 https://github.com/gl-inet/glinet4.x.git
           cp ./glinet4.x/pkg_config/gl_pkg_config_mt2500.mk  ./glinet4.x/mt7981/gl_pkg_config.mk
           cp ./glinet4.x/pkg_config/glinet_depends_mt2500.yml  ./gl-infra-builder/profiles/glinet_depends.yml
-          cp -r custom/ ./gl-infra-builder/feeds/custom/
+        # cp -r custom/ ./gl-infra-builder/feeds/custom/
           cp *.yml ./gl-infra-builder/profiles
           cd gl-infra-builder
           python3 setup.py -c configs/config-mt798x-7.6.6.1.yml
           cd mt7981
           ./scripts/gen_config.py glinet_depends custom
-          echo ${{ env.glversion1 }} >files/etc/glversion
-          echo ${{ env.glversion2 }} >files/etc/version.type
+          echo ${{ env.glversion }} >files/etc/glversion
+        # echo ${{ env.glversion2 }} >files/etc/version.type
 
 
       - name: Make
