@@ -1,6 +1,7 @@
-feeds:
   # - name: custom
   #   path: ../feeds_dir/custom
+  # - default-settings
+feeds:
   - name: AoThen_Packages
     uri: https://github.com/AoThen/Openwrt-Packages.git
     branch: feeds
@@ -16,4 +17,3 @@ packages:
   - luci-app-netspeedtest
   - luci-theme-argon
   - luci-app-argon-config
-  # - default-settings

@@ -47,8 +47,6 @@ jobs:
       #     tail -n $($(wc -l custom.yml)-8) custom.yml
       #     echo "release_text=$(tail -n $($(wc -l custom.yml)-8) custom.yml)" >> $GITHUB_OUTPUT
       #     echo "status=success" >> $GITHUB_OUTPUT
-
-
       # cp -r custom/ ./gl-infra-builder/feeds/custom/
       # echo ${{ env.glversion2 }} >files/etc/version.type
 
