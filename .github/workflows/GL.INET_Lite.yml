@@ -35,8 +35,12 @@ jobs:
           remove-haskell: 'true'
           remove-dotnet: 'true'
 
-      - name: Install
+      - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Install
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo apt update -y
