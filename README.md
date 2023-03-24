@@ -52,6 +52,8 @@
 > 
 > https://github.com/draco-china/Draco-OpenWrt-GL-AX1800
 >
+> https://github.com/easimon/maximize-build-space
+>
 > https://github.com/AoThen/Openwrt-Packages.git
 >
 > https://github.com/kenzok8/small-package

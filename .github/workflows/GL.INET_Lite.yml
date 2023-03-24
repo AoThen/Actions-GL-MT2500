@@ -28,8 +28,15 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+        remove-android: 'true'
+        remove-haskell: 'true'
+        remove-dotnet: 'true'
+
+      - name: Install
       - uses: actions/checkout@v3
-      - name: Update
         run: |
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo apt update -y
