@@ -14,6 +14,7 @@ packages:
   - luci-app-alist
   - luci-app-serverchan
   - luci-app-ramfree
+  - luci-app-cloudflarespeedtest
   - luci-app-netspeedtest
   - luci-theme-argon
   - luci-app-argon-config
