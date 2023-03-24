@@ -31,12 +31,12 @@ jobs:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
         with:
-        remove-android: 'true'
-        remove-haskell: 'true'
-        remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-dotnet: 'true'
 
       - name: Install
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
         run: |
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo apt update -y
