@@ -12,6 +12,7 @@ packages:
   - luci-app-passwall
   - luci-app-aliyundrive-webdav
   - luci-app-alist
+  - luci-app-serverchan
   - luci-app-ramfree
   - luci-app-netspeedtest
   - luci-theme-argon
