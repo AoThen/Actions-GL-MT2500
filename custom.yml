@@ -16,5 +16,6 @@ packages:
   - luci-app-ramfree
   - luci-app-cloudflarespeedtest
   - luci-app-netspeedtest
+  - luci-app-vlmcsd
   - luci-theme-argon
   - luci-app-argon-config

@@ -18,7 +18,7 @@ env:
   glversion: "5.4.211A"
   istore: false
   isdocker: true
-  isrelease: false
+  isrelease: true
   pushplus: true
 
 
@@ -31,6 +31,8 @@ jobs:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
         with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
           remove-android: 'true'
           remove-haskell: 'true'
           remove-dotnet: 'true'
@@ -72,7 +74,7 @@ jobs:
           cd gl-infra-builder
           python3 setup.py -c configs/config-mt798x-7.6.6.1.yml
           cd mt7981
-          ./scripts/gen_config.py glinet_depends custom docker
+          ./scripts/gen_config.py glinet_depends custom
           echo ${{ env.glversion }} >files/etc/glversion
 
 
@@ -116,6 +118,7 @@ jobs:
           pushplus: ${{ env.pushplus }} " > info.txt
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           rm -rf "openwrt-imagebuilder-mediatek-mt7981.Linux-x86_64.tar.xz"
+          rm -rf "openwrt-mediatek-mt7981-glinet_gl-mt2500-initramfs-kernel.bin"
           cd ~/packages
           echo "
           device: ${{ env.device }}
@@ -164,7 +167,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_FIRMWARE }}
         with:
-          body: ${{ env.record }}
+          body: ${{ env.record }}-${{ github.event_name }}
           tag_name: ${{ steps.tag.outputs.release_tag }}
           files: ${{ env.FIRMWARE }}/*
 
