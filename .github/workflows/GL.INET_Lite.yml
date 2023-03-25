@@ -14,7 +14,7 @@ on:
 #inputs换env
 env:
   device: "target_mt7981_gl-mt2500"
-  record: "4.2.0版"
+  record: "4.2.0正式版"
   glversion: "5.4.211A"
   istore: false
   isdocker: true
@@ -72,7 +72,7 @@ jobs:
           cd gl-infra-builder
           python3 setup.py -c configs/config-mt798x-7.6.6.1.yml
           cd mt7981
-          ./scripts/gen_config.py glinet_depends custom istore
+          ./scripts/gen_config.py glinet_depends custom
           echo ${{ env.glversion }} >files/etc/glversion
 
 
