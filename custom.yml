@@ -19,3 +19,7 @@ packages:
   - luci-app-vlmcsd
   - luci-theme-argon
   - luci-app-argon-config
+  - luci-theme-edge
+
+diffconfig: |
+  CONFIG_PACKAGE_luci-theme-bootstrap=n
