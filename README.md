@@ -7,7 +7,7 @@
 
 内核版本5.4.211
 
-4.2.0 package
+4.2.1 package
 
 # 编译包
 - 因为固件自带adguardhome的原因就不额外编译了   [**(路由器地址)**](http://192.168.8.1/#/adguardhome)
