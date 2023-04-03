@@ -17,7 +17,7 @@ env:
   record: "4.2.1正式版"
   glversion: "5.4.211A"
   istore: false
-  isdocker: true
+  isdocker: false
   isrelease: true
   pushplus: true
 
