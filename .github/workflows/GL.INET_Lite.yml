@@ -11,6 +11,7 @@ on:
       # - ".yml"
       # - "*.sh"
 
+
 #inputs换env
 env:
   device: "target_mt7981_gl-mt2500"
@@ -22,7 +23,6 @@ env:
   pushplus: true
 
 
-# sudo apt upgrade -y会报错
 
 jobs:
   build:
@@ -109,8 +109,7 @@ jobs:
           echo "
           device: ${{ env.device }}
           record: ${{ env.record }}
-          glversion1: ${{ env.glversion1 }}
-          glversion2: ${{ env.glversion2 }}
+          glversion: ${{ env.glversion }}
           istore: ${{ env.istore }}
           isrelease: ${{ env.isrelease }}
           pushplus: ${{ env.pushplus }} " > info.txt
@@ -121,8 +120,7 @@ jobs:
           echo "
           device: ${{ env.device }}
           record: ${{ env.record }}
-          glversion1: ${{ env.glversion1 }}
-          glversion2: ${{ env.glversion2 }}
+          glversion: ${{ env.glversion }}
           istore: ${{ env.istore }}
           isrelease: ${{ env.isrelease }}
           pushplus: ${{ env.pushplus }} " > info.txt
@@ -138,7 +136,7 @@ jobs:
         uses: actions/upload-artifact@main
         if: steps.organize.outputs.status == 'success' && !cancelled() && !failure()
         with:
-          name: OpenWrt_packages${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+          name: OpenWrt_packages${{ env.FILE_DATE }}
           path: ${{ env.PACKAGES }}
 
       - name: Del packages directory
@@ -149,7 +147,7 @@ jobs:
         uses: actions/upload-artifact@main
         if: steps.organize.outputs.status == 'success' && !cancelled() && !failure()
         with:
-          name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+          name: OpenWrt_firmware${{ env.FILE_DATE }}
           path: ${{ env.FIRMWARE }}
 
       - name: Generate release tag
