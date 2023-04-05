@@ -3,9 +3,9 @@ name: Build GL.INET MT2500
 on:
   workflow_dispatch:
 
-  push:
-    branches:
-      - DIY
+  # push:
+  #   branches:
+  #     - DIY
   #   paths:
   #     - '.github/workflows/GL.INET_Lite.yml'
       # - ".yml"
@@ -18,7 +18,7 @@ env:
   glversion: "5.4.211A"
   istore: false
   isdocker: false
-  isrelease: true
+  isrelease: false
   pushplus: true
 
 
