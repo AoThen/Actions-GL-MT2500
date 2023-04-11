@@ -8,9 +8,8 @@ on:
   #     - DIY
   #   paths:
   #     - '.github/workflows/GL.INET_Lite.yml'
-      # - ".yml"
-      # - "*.sh"
-
+  # - ".yml"
+  # - "*.sh"
 
 #inputs换env
 env:
@@ -23,7 +22,6 @@ env:
   pushplus: true
 
 
-
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -31,9 +29,9 @@ jobs:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
         with:
-          remove-android: 'true'
-          remove-haskell: 'true'
-          remove-dotnet: 'true'
+          remove-android: "true"
+          remove-haskell: "true"
+          remove-dotnet: "true"
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -74,7 +72,6 @@ jobs:
           cd mt7981
           ./scripts/gen_config.py glinet_depends custom
           echo ${{ env.glversion }} >files/etc/glversion
-
 
       - name: Make
         run: |

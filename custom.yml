@@ -19,6 +19,6 @@ packages:
   - luci-app-vlmcsd
   - luci-theme-argon
   - luci-app-argon-config
-  - luci-theme-edge
+
 
 
