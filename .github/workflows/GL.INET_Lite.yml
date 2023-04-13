@@ -3,13 +3,13 @@ name: Build GL.INET MT2500
 on:
   workflow_dispatch:
 
-  # push:
-  #   branches:
-  #     - DIY
-  #   paths:
-  #     - '.github/workflows/GL.INET_Lite.yml'
-  # - ".yml"
-  # - "*.sh"
+  push:
+    branches:
+      - DIY
+    paths:
+      - '.github/workflows/GL.INET_Lite.yml'
+      - "*.yml"
+      - "*.sh"
 
 #inputs换env
 env:
@@ -70,7 +70,7 @@ jobs:
           cd gl-infra-builder
           python3 setup.py -c configs/config-mt798x-7.6.6.1.yml
           cd mt7981
-          ./scripts/gen_config.py glinet_depends custom docker
+          ./scripts/gen_config.py glinet_depends custom
           echo ${{ env.glversion }} >files/etc/glversion
 
       - name: Make
