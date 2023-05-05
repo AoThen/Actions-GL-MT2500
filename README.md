@@ -23,13 +23,13 @@
 - luci-app-alist **(开放外网访问)**
 - luci-app-serverchan
 - luci-app-vlmcsd **(默认即可)**
-- luci-app-serverchan
+- luci-app-netdata
 - ~~ramfree~~
 - ~~luci-app-broadbandacc~~
-- 以下插件试验中
+- 以下插件测试实验中
 - netspeedtest **(和istore冲突)**
 - cloudflarespeedtest **(有问题)**
-- istore **(自选)**
+- istore **(自选,新版未测试了)**
 - docker和luci-lib-dockerman  **(自选)**
 - ~~luci-app-vssr **(测试有问题,且和SSR重复,不纳入)**~~
 
