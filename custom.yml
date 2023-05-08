@@ -9,6 +9,7 @@ feeds:
 packages:
   - luci-app-openclash
   - luci-app-passwall
+  - luci-app-ssr-plus
   - luci-app-aliyundrive-webdav
   - luci-app-alist
   - luci-app-serverchan
