@@ -18,7 +18,7 @@ env:
   glversion: "5.4.211A"
   istore: false
   isdocker: false
-  isrelease: true
+  isrelease: false
   pushplus: true
 
 
