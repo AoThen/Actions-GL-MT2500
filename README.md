@@ -21,9 +21,9 @@
 - helloworld **(旁路由成功,经常网络波动,疑似自动切换节点检测导致)**
 - aliyundrive-webdav
 - luci-app-alist **(开放外网访问)**
-- luci-app-serverchan
+- ~~luci-app-serverchan~~
 - luci-app-vlmcsd **(默认即可)**
-- luci-app-netdata
+- ~~luci-app-netdata~~
 - ~~ramfree~~
 - ~~luci-app-broadbandacc~~
 - 以下插件测试实验中

@@ -14,11 +14,11 @@ on:
 #inputs换env
 env:
   device: "target_mt7981_gl-mt2500"
-  record: "4.2.1正式版,openclash最新版"
-  glversion: "5.4.211A"
+  record: "4.2.1正式版"
+  glversion: "5.4.211B"
   istore: false
   isdocker: false
-  isrelease: true
+  isrelease: false
   pushplus: true
 
 
