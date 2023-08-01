@@ -7,10 +7,6 @@ feeds:
     branch: feeds
 
 packages:
-  - luci-app-openclash
-  - luci-app-aliyundrive-webdav
-  - luci-app-alist
-  - luci-app-vlmcsd
   - luci-theme-argon
   - luci-app-argon-config
 
