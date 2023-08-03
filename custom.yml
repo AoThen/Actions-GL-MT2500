@@ -9,7 +9,6 @@ feeds:
 packages:
   - luci-app-passwall
   - luci-app-ssr-plus
-  - luci-app-openclash
   - luci-app-alist
   - luci-app-vlmcsd
   - luci-theme-argon

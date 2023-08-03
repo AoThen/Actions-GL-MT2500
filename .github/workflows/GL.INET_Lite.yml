@@ -14,7 +14,7 @@ on:
 #inputs换env
 env:
   device: "target_mt7981_gl-mt2500"
-  record: "4.2.1正式版"
+  record: "4.2.1正式版去除openclash"
   glversion: "5.4.211P"
   istore: false
   isdocker: false
