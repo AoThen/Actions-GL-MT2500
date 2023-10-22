@@ -1,4 +1,7 @@
 # Actions-GL-MT2500
+
+因为上游GL闭源，项目封存
+
 📌GL-MT2500自用固件定制
 
 [![Build GL.INET MT2500](https://github.com/AoThen/Actions-GL-MT2500/actions/workflows/GL.INET_Lite.yml/badge.svg)](https://github.com/AoThen/Actions-GL-MT2500/actions/workflows/GL.INET_Lite.yml)
